@@ -1,0 +1,12 @@
+192.168.100.40 - - [08/Aug/2021:17:07:18 +0200] "GET /ws/auth/telephone/674291226 HTTP/1.1" 200 1107
+192.168.100.40 - - [08/Aug/2021:17:07:18 +0200] "GET /ws/utilisateur/telephone/674291226 HTTP/1.1" 200 1107
+192.168.100.40 - - [08/Aug/2021:17:07:18 +0200] "POST /ws/utilisateur/modification HTTP/1.1" 200 1107
+192.168.100.40 - - [08/Aug/2021:17:07:18 +0200] "POST /ws/session/ajout HTTP/1.1" 200 1859
+192.168.100.40 - - [08/Aug/2021:17:38:30 +0200] "GET /ws/utilisateur/etablissement/1 HTTP/1.1" 200 1109
+192.168.100.40 - - [08/Aug/2021:17:38:37 +0200] "GET /ws/utilisateur/etablissement/1 HTTP/1.1" 200 1109
+192.168.100.40 - - [08/Aug/2021:17:38:37 +0200] "GET /ws/localisation/etablissement/1/utilisateur/1 HTTP/1.1" 200 12
+192.168.100.40 - - [08/Aug/2021:17:38:42 +0200] "GET /ws/session/etablissement/1 HTTP/1.1" 200 720591
+192.168.100.40 - - [08/Aug/2021:22:18:20 +0200] "GET /ws/auth/telephone/674291226 HTTP/1.1" 200 1107
+192.168.100.40 - - [08/Aug/2021:22:18:20 +0200] "GET /ws/utilisateur/telephone/674291226 HTTP/1.1" 200 1107
+192.168.100.40 - - [08/Aug/2021:22:18:20 +0200] "POST /ws/utilisateur/modification HTTP/1.1" 200 1107
+192.168.100.40 - - [08/Aug/2021:22:18:20 +0200] "POST /ws/session/ajout HTTP/1.1" 200 1859

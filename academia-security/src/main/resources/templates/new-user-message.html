@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Academia - Validation de l'e-mail</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bootstrap.min.css" >
+  <script src="bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container-fluid text-center">    
+  <div class="row content bg-primary">
+    <div class="col-sm-2 sidenav" ></div>
+    <div class="col-sm-8 text-left"> 
+      <p>Bonjour <strong>${pseudonyme}</strong>,</p>
+      <p>
+      	Votre compte utilisateur vient d'être créé au sein de l'application  <span class="h5 text-primary" >Academia</span>.
+      	Vous pourrez accéder avec le profil <strong>${libelleRole}</strong> avec le numéro de téléphone <strong>${telephone}</strong>  
+      	et votre mot de passe. <br/> Afin d'accéder à l'application, vous devez définir votre  mot de passe en cliquant sur le lien suivant :
+      	<a href="${lienApplication}"  class="btn btn-success text-center"  >
+           ${lienApplication}
+         </a>
+      </p>
+      <hr>
+      <h3 class="h5 text-primary">L'équipe  <span class="badge badge-secondary" >Academia</span></h3>
+      <p>+237 698037324</p>
+    </div>
+    <div class="col-sm-2 sidenav bg-primary" ></div>
+  </div>
+</div>
+
+
+</body>
+</html>

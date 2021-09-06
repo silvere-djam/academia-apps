@@ -1,0 +1,5 @@
+192.168.100.40 - - [14/Aug/2021:02:41:50 +0200] "GET /ws/auth/telephone/674291226 HTTP/1.1" 200 1107
+192.168.100.40 - - [14/Aug/2021:02:41:50 +0200] "GET /ws/utilisateur/telephone/674291226 HTTP/1.1" 200 1107
+192.168.100.40 - - [14/Aug/2021:02:41:50 +0200] "POST /ws/utilisateur/modification HTTP/1.1" 200 1107
+192.168.100.40 - - [14/Aug/2021:02:41:50 +0200] "POST /ws/session/ajout HTTP/1.1" 200 1857
+192.168.100.40 - - [14/Aug/2021:10:35:48 +0200] "GET /ws/auth/telephone/674291226/pwd/adjdsllsslsjsjaljsj HTTP/1.1" 200 1107

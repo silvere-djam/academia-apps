@@ -1,0 +1,4 @@
+178.18.179.30 - - [03/May/2021:11:29:16 +0200] "GET /ws/utilisateur/login/admin HTTP/1.1" 200 1347
+178.18.179.30 - - [03/May/2021:11:29:16 +0200] "GET /ws/utilisateur/login/admin HTTP/1.1" 200 1347
+178.18.179.30 - - [03/May/2021:11:29:16 +0200] "PUT /ws/utilisateur/maj HTTP/1.1" 200 1347
+178.18.179.30 - - [03/May/2021:11:29:16 +0200] "POST /ws/session/ajout HTTP/1.1" 200 1908

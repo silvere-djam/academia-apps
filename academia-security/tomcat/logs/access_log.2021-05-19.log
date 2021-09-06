@@ -1,0 +1,4 @@
+192.168.100.40 - - [19/May/2021:20:14:04 +0200] "GET /ws/utilisateur/login/admin HTTP/1.1" 200 1587
+192.168.100.40 - - [19/May/2021:20:14:04 +0200] "GET /ws/utilisateur/login/admin HTTP/1.1" 200 1587
+192.168.100.40 - - [19/May/2021:20:14:05 +0200] "PUT /ws/utilisateur/maj HTTP/1.1" 200 1586
+192.168.100.40 - - [19/May/2021:20:14:05 +0200] "POST /ws/session/ajout HTTP/1.1" 200 2305
