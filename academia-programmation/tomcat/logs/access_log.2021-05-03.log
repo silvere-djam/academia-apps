@@ -1,0 +1,9 @@
+178.18.179.30 - - [03/May/2021:11:29:16 +0200] "GET /ws/etablissement/id/1 HTTP/1.1" 200 310
+178.18.179.30 - - [03/May/2021:11:29:16 +0200] "GET /ws/anneescolaire/etablissement/1/courante HTTP/1.1" 200 532
+178.18.179.30 - - [03/May/2021:11:29:38 +0200] "GET /ws/trimestre/etablissement/1/anneescolaire/1 HTTP/1.1" 200 3299
+178.18.179.30 - - [03/May/2021:11:29:38 +0200] "GET /ws/anneescolaire/etablissement/1 HTTP/1.1" 200 1094
+178.18.179.30 - - [03/May/2021:11:29:47 +0200] "GET /ws/classe/etablissement/1 HTTP/1.1" 200 17250
+178.18.179.30 - - [03/May/2021:11:29:47 +0200] "GET /ws/anneescolaire/etablissement/1 HTTP/1.1" 200 1094
+178.18.179.30 - - [03/May/2021:11:29:58 +0200] "GET /ws/classe/etablissement/1 HTTP/1.1" 200 17250
+178.18.179.30 - - [03/May/2021:11:29:58 +0200] "GET /ws/ue/etablissement/1/classe/1618842194998 HTTP/1.1" 200 9873
+178.18.179.30 - - [03/May/2021:11:29:58 +0200] "GET /ws/enseignant/etablissement/1/classe/1618842194998 HTTP/1.1" 200 5384

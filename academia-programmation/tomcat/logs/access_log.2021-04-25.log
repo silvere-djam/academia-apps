@@ -1,0 +1,8 @@
+192.168.100.40 - - [25/Apr/2021:10:56:49 +0200] "GET /ws/etablissement/id/1 HTTP/1.1" 200 310
+192.168.100.40 - - [25/Apr/2021:10:56:49 +0200] "GET /ws/anneescolaire/etablissement/1/courante HTTP/1.1" 200 508
+192.168.100.40 - - [25/Apr/2021:10:56:56 +0200] "GET /ws/etablissement/id/1 HTTP/1.1" 200 310
+192.168.100.40 - - [25/Apr/2021:10:56:56 +0200] "GET /ws/anneescolaire/etablissement/1/courante HTTP/1.1" 200 508
+192.168.100.40 - - [25/Apr/2021:10:57:56 +0200] "GET /ws/etablissement/id/1 HTTP/1.1" 200 310
+192.168.100.40 - - [25/Apr/2021:10:57:56 +0200] "GET /ws/anneescolaire/etablissement/1/courante HTTP/1.1" 200 508
+192.168.100.40 - - [25/Apr/2021:10:58:55 +0200] "GET /ws/etablissement/id/1 HTTP/1.1" 200 310
+192.168.100.40 - - [25/Apr/2021:10:58:55 +0200] "GET /ws/anneescolaire/etablissement/1/courante HTTP/1.1" 200 508

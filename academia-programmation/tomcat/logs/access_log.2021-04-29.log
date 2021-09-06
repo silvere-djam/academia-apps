@@ -1,0 +1,2 @@
+172.31.112.1 - - [29/Apr/2021:14:13:36 +0200] "GET /ws/etablissement/id/1 HTTP/1.1" 200 310
+172.31.112.1 - - [29/Apr/2021:14:13:36 +0200] "GET /ws/anneescolaire/etablissement/1/courante HTTP/1.1" 200 508

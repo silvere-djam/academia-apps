@@ -1,0 +1,2 @@
+192.168.100.40 - - [16/May/2021:00:03:12 +0200] "GET /ws/etablissement/id/1 HTTP/1.1" 200 467
+192.168.100.40 - - [16/May/2021:00:03:12 +0200] "GET /ws/anneescolaire/etablissement/1/courante HTTP/1.1" 200 708
