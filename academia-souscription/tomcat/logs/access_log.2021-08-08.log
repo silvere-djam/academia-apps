@@ -1,0 +1,7 @@
+192.168.100.40 - - [08/Aug/2021:22:22:49 +0200] "GET /ws/etablissement/all HTTP/1.1" 200 38811
+192.168.100.40 - - [08/Aug/2021:22:22:55 +0200] "GET /ws/etablissement/all HTTP/1.1" 200 38811
+192.168.100.40 - - [08/Aug/2021:22:22:55 +0200] "GET /ws/abonnement/all HTTP/1.1" 200 51438
+192.168.100.40 - - [08/Aug/2021:22:24:29 +0200] "GET /ws/abonnement/etablissement/1000000000 HTTP/1.1" 200 817
+192.168.100.40 - - [08/Aug/2021:22:24:38 +0200] "GET /ws/abonnement/etablissement/8 HTTP/1.1" 200 1164
+192.168.100.40 - - [08/Aug/2021:22:24:46 +0200] "GET /ws/abonnement/etablissement/1000000011 HTTP/1.1" 200 12
+192.168.100.40 - - [08/Aug/2021:22:24:53 +0200] "GET /ws/abonnement/etablissement/10 HTTP/1.1" 200 1149

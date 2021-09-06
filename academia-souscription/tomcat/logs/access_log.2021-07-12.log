@@ -1,0 +1,9 @@
+192.168.100.40 - - [12/Jul/2021:00:36:42 +0200] "GET /ws/localite/all HTTP/1.1" 200 602
+192.168.100.40 - - [12/Jul/2021:00:37:44 +0200] "GET /ws/localite/id/1 HTTP/1.1" 200 118
+192.168.100.40 - - [12/Jul/2021:00:37:44 +0200] "GET /ws/localite/all HTTP/1.1" 200 602
+192.168.100.40 - - [12/Jul/2021:00:37:57 +0200] "GET /ws/localite/id/1 HTTP/1.1" 200 118
+192.168.100.40 - - [12/Jul/2021:00:37:58 +0200] "POST /ws/abonnement/etablissement/ajout HTTP/1.1" 200 1295
+192.168.100.40 - - [12/Jul/2021:01:00:33 +0200] "GET /ws/localite/all HTTP/1.1" 200 602
+192.168.100.40 - - [12/Jul/2021:01:01:30 +0200] "GET /ws/localite/id/1 HTTP/1.1" 200 118
+192.168.100.40 - - [12/Jul/2021:01:01:30 +0200] "POST /ws/abonnement/etablissement/ajout HTTP/1.1" 200 1268
+192.168.100.40 - - [12/Jul/2021:12:31:51 +0200] "GET /ws/localite/all HTTP/1.1" 200 602
