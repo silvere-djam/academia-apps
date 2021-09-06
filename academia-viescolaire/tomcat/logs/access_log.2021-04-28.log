@@ -1,0 +1,6 @@
+192.168.100.40 - - [28/Apr/2021:01:39:44 +0200] "GET /ws/cours/etablissement/1/classe/1618842194998/anneescolaire/1 HTTP/1.1" 200 12
+178.18.179.30 - - [28/Apr/2021:09:22:32 +0200] "GET /ws/cours/etablissement/1/classe/1618842194998/anneescolaire/1 HTTP/1.1" 200 12
+178.18.179.30 - - [28/Apr/2021:09:25:29 +0200] "GET /ws/cours/etablissement/1/classe/1618842194998/anneescolaire/1 HTTP/1.1" 200 12
+178.18.179.30 - - [28/Apr/2021:16:25:53 +0200] "GET /ws/cours/etablissement/1/classe/1618842194998/anneescolaire/1 HTTP/1.1" 200 12
+178.18.179.30 - - [28/Apr/2021:16:39:57 +0200] "GET /ws/cours/etablissement/1/classe/1618842194998/anneescolaire/1 HTTP/1.1" 200 12
+178.18.179.30 - - [28/Apr/2021:16:39:57 +0200] "GET /ws/cours/etablissement/1/classe/1618842194998/anneescolaire/1 HTTP/1.1" 200 12

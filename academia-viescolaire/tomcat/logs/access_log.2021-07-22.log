@@ -1,0 +1,2 @@
+178.18.179.30 - - [22/Jul/2021:11:59:49 +0200] "GET /ws/classe/etablissement/1 HTTP/1.1" 200 34355
+178.18.179.30 - - [22/Jul/2021:11:59:49 +0200] "GET /ws/evaluation/etablissement/1/classe/1619019575314/anneescolaire/1 HTTP/1.1" 200 12

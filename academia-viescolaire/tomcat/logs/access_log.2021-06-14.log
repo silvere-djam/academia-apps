@@ -1,0 +1,7 @@
+192.168.100.40 - - [14/Jun/2021:01:51:10 +0200] "GET /ws/cours/etablissement/1/classe/1618842194998/anneescolaire/1 HTTP/1.1" 200 86269
+192.168.100.30 - - [14/Jun/2021:01:53:12 +0200] "GET /ws/offre/6000 HTTP/1.1" 404 307
+192.168.100.30 - - [14/Jun/2021:01:53:12 +0200] "GET /favicon.ico HTTP/1.1" 404 144
+192.168.100.30 - - [14/Jun/2021:01:53:35 +0200] "GET /ws/offre/cout/6000 HTTP/1.1" 404 307
+192.168.100.40 - - [14/Jun/2021:01:57:07 +0200] "GET /ws/cours/etablissement/1/id/1000000003 HTTP/1.1" 200 12333
+192.168.100.40 - - [14/Jun/2021:01:57:07 +0200] "GET /ws/enseignant/etablissement/1/classe/1618842194998 HTTP/1.1" 200 8213
+192.168.100.40 - - [14/Jun/2021:01:57:07 +0200] "GET /ws/ue/etablissement/1/classe/1618842194998 HTTP/1.1" 200 10207
