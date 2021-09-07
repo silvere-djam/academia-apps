@@ -1,6 +1,5 @@
 package cm.deepdream.academia.integration.model;
 import java.io.Serializable;
-
 import cm.deepdream.academia.programmation.data.Eleve;
 import lombok.AllArgsConstructor;
 import lombok.Data;
