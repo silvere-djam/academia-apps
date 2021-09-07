@@ -61,7 +61,29 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>dockerfile-maven-plugin</artifactId>
+				<configuration>
+					<repository>academia/${project.actifactId}</repository>
+					<tag>${project.version}</tag>
+					<buildArg>
+						<JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+					</buildArg>
+				</configuration>
+				<executions>
+					<execution>
+						<id>default</id>
+						<phase>install</phase>
+						<goals>
+							<goal>build</goal>
+							<goal>push</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
+		<finalName>academia-configsrv</finalName>
 	</build>
-
+	
 </project>
