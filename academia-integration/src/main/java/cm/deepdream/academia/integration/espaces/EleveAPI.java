@@ -47,21 +47,6 @@ public class EleveAPI {
 			 @RequestParam(value="adresse", required=false) String adresse, @RequestParam("telephone") String telephone, @RequestParam("email") String email,
 			 @RequestParam("idEtablissement") Long idEtablissement, MultipartFile file){
 		try {
-//			logger.info("matricule="+matricule.substring(1, matricule.length()-1));
-//			logger.info("nom="+nom.substring(1, nom.length()-1));
-//			logger.info("prenom="+prenom.substring(1, prenom.length()-1));
-//			logger.info("sexe="+sexe);
-//			logger.info("dateNaissance="+dateNaissance);
-//			logger.info("lieuNaissance="+lieuNaissance);
-//			logger.info("dateAdmission="+dateAdmission);
-//			logger.info("libellePays="+libellePays);
-//			logger.info("nomParent="+nomParent);
-//			logger.info("adresseParent="+adresseParent);
-//			logger.info("adresse="+adresse);
-//			logger.info("telephone="+telephone);
-//			logger.info("email="+email);
-//			logger.info("idEtablissement="+idEtablissement);
-//			logger.info("file="+file.getName());
 			Eleve eleve = new Eleve() ;
 			eleve.setMatricule(matricule.substring(1, matricule.length()-1));
 			eleve.setNom(nom.substring(1, nom.length()-1));
