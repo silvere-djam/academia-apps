@@ -16,8 +16,6 @@ public class AuthentificationWS {
 	private Logger logger = Logger.getLogger(AuthentificationWS.class.getName()) ;
 	@Autowired
 	private UtilisateurService utilisateurService ;
-	@Autowired
-	private EtablissementService etablissementService ;
 	
 
 	@GetMapping("/telephone/{telephone}")
