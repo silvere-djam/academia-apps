@@ -1,0 +1,15 @@
+0:0:0:0:0:0:0:1 - - [08/Jul/2021:00:13:39 +0200] "GET /api/anneescolaire/etablissement/1 HTTP/1.1" 200 2377
+192.168.100.40 - - [08/Jul/2021:05:14:55 +0200] "GET /api/auth/telephone/674291226/pwd/adkdmakdjdkkdkdkdk HTTP/1.1" 200 1956
+192.168.100.40 - - [08/Jul/2021:05:15:00 +0200] "GET /api/examen/etablissement/1/anneescolaire/1 HTTP/1.1" 200 9393
+192.168.100.40 - - [08/Jul/2021:05:15:00 +0200] "GET /api/centreexamen/etablissement/1/examen/1000000001 HTTP/1.1" 200 25137
+192.168.100.40 - - [08/Jul/2021:05:15:00 +0200] "GET /api/salleexamen/etablissement/1/centreexamen/1000000001 HTTP/1.1" 200 11750
+192.168.100.40 - - [08/Jul/2021:05:15:00 +0200] "GET /api/candidat/etablissement/1/salleexamen/1000000002 HTTP/1.1" 200 12
+192.168.100.40 - - [08/Jul/2021:05:15:05 +0200] "GET /api/salleexamen/etablissement/1/centreexamen/1000000000 HTTP/1.1" 200 11771
+192.168.100.40 - - [08/Jul/2021:05:15:05 +0200] "GET /api/candidat/etablissement/1/salleexamen/1000000001 HTTP/1.1" 200 81291
+192.168.100.40 - - [08/Jul/2021:05:15:05 +0200] "GET /api/eleve/photo/etablissement/1/id/1619021352384 HTTP/1.1" 200 67742
+192.168.100.40 - - [08/Jul/2021:05:15:05 +0200] "GET /api/eleve/photo/etablissement/1/id/1619021352384 HTTP/1.1" 200 67742
+192.168.100.40 - - [08/Jul/2021:05:15:05 +0200] "GET /api/eleve/photo/etablissement/1/id/1000000001 HTTP/1.1" 200 121255
+192.168.100.40 - - [08/Jul/2021:05:15:06 +0200] "GET /api/eleve/photo/etablissement/1/id/1619024307138 HTTP/1.1" 200 91965
+192.168.100.40 - - [08/Jul/2021:05:15:11 +0200] "GET /api/examen/etablissement/1/anneescolaire/1 HTTP/1.1" 200 9393
+192.168.100.40 - - [08/Jul/2021:05:15:11 +0200] "GET /api/centreexamen/etablissement/1/examen/1000000001 HTTP/1.1" 200 25137
+192.168.100.40 - - [08/Jul/2021:05:15:11 +0200] "GET /api/salleexamen/etablissement/1/centreexamen/1000000001 HTTP/1.1" 200 11750

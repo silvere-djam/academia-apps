@@ -1,0 +1,8 @@
+192.168.100.40 - - [24/Aug/2021:09:34:21 +0200] "GET /api/classe/etablissement/1 HTTP/1.1" 200 26138
+192.168.100.40 - - [24/Aug/2021:09:34:22 +0200] "GET /api/eleve/etablissement/1/classe/1619019662951/anneescolaire/1 HTTP/1.1" 200 19605
+192.168.100.40 - - [24/Aug/2021:09:34:22 +0200] "GET /api/eleve/etablissement/1/classe/1619019662951/anneescolaire/1 HTTP/1.1" 200 19605
+192.168.100.40 - - [24/Aug/2021:09:39:31 +0200] "GET /api/classe/etablissement/1 HTTP/1.1" 200 26138
+192.168.100.40 - - [24/Aug/2021:09:39:32 +0200] "GET /api/eleve/etablissement/1/classe/1619019662951/anneescolaire/1 HTTP/1.1" 200 19605
+192.168.100.40 - - [24/Aug/2021:09:39:32 +0200] "GET /api/eleve/etablissement/1/classe/1619019662951/anneescolaire/1 HTTP/1.1" 200 19605
+192.168.100.40 - - [24/Aug/2021:09:44:01 +0200] "GET /api/eleve/etablissement/1/classe/1619019732812/anneescolaire/1 HTTP/1.1" 200 12
+192.168.100.40 - - [24/Aug/2021:09:56:20 +0200] "GET /api/eleve/etablissement/1/classe/1618842194998/anneescolaire/1 HTTP/1.1" 200 27475
