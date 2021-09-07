@@ -1,5 +1,6 @@
 package cm.deepdream.academia.programmation.deserializers;
 import java.io.IOException;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -18,7 +19,6 @@ import cm.deepdream.academia.programmation.data.Domaine;
 import cm.deepdream.academia.programmation.data.Eleve;
 import cm.deepdream.academia.programmation.data.Enseignant;
 import cm.deepdream.academia.souscription.data.Etablissement;
-import cm.deepdream.academia.programmation.data.Filiere;
 import cm.deepdream.academia.programmation.data.Fonction;
 import cm.deepdream.academia.programmation.data.Groupe;
 import cm.deepdream.academia.programmation.data.Niveau;
