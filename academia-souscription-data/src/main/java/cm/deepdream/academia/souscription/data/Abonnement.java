@@ -6,7 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import org.springframework.format.annotation.DateTimeFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -25,11 +24,9 @@ public class Abonnement extends EntiteGenerique{
 	private Integer nbEleves ;
 	
 	@Column (name = "date_debut")
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dateDebut ;
 	
 	@Column (name = "date_fin")
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dateFin ;
 	
 	@ManyToOne

@@ -36,8 +36,8 @@ public class DocumentProducer implements Serializable{
 			public void run() {
 				try{
 					source.output().send(MessageBuilder.withPayload(document)
-							   .setHeader("partitionKey", partition1)
-							   .build()) ;
+						  .setHeader("partitionKey", partition1)
+						  .build()) ;
 					logger.info("Document "+document+" has been published to "+partition1);
 					source.output().send(MessageBuilder.withPayload(document)
 		                       .setHeader("partitionKey", partition2)

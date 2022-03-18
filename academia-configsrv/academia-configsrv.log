@@ -1,0 +1,127 @@
+2021-09-07 13:18:34.872  INFO 21644 --- [RMI TCP Connection(2)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2021-09-07 13:18:34.873  INFO 21644 --- [RMI TCP Connection(2)-127.0.0.1] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application ACADEMIA-CONFIGSRV with eureka with status DOWN
+2021-09-07 13:18:35.011  INFO 21644 --- [RMI TCP Connection(2)-127.0.0.1] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2021-09-07 13:18:35.028  INFO 21644 --- [RMI TCP Connection(2)-127.0.0.1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-09-07 13:18:35.031  INFO 21644 --- [RMI TCP Connection(2)-127.0.0.1] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2021-09-07 13:18:35.039  INFO 21644 --- [RMI TCP Connection(2)-127.0.0.1] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
+2021-09-07 13:18:42.796  INFO 5720 --- [restartedMain] c.d.a.c.AcademiaConfigsrvApplication     : No active profile set, falling back to default profiles: default
+2021-09-07 13:18:43.430  WARN 5720 --- [restartedMain] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2021-09-07 13:18:43.541  INFO 5720 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=0893fc33-d152-3c2f-bd7e-0c0edaa8d262
+2021-09-07 13:18:44.049  INFO 5720 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8888 (http)
+2021-09-07 13:18:44.059  INFO 5720 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-09-07 13:18:44.060  INFO 5720 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2021-09-07 13:18:44.148  INFO 5720 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-09-07 13:18:44.148  INFO 5720 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1330 ms
+2021-09-07 13:18:44.203  WARN 5720 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-09-07 13:18:44.204  INFO 5720 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-09-07 13:18:44.214  INFO 5720 --- [restartedMain] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@773b1d9f
+2021-09-07 13:18:44.292  WARN 5720 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-09-07 13:18:44.293  INFO 5720 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-09-07 13:18:44.552  INFO 5720 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-09-07 13:18:45.276  INFO 5720 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-09-07 13:18:45.553  WARN 5720 --- [restartedMain] ockingLoadBalancerClientRibbonWarnLogger : You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2021-09-07 13:18:45.608  INFO 5720 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2021-09-07 13:18:45.668  INFO 5720 --- [restartedMain] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2021-09-07 13:18:45.686  INFO 5720 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region default
+2021-09-07 13:18:45.687  INFO 5720 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Client configured to neither register nor query for data.
+2021-09-07 13:18:45.693  INFO 5720 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1631013525693 with initial instances count: 0
+2021-09-07 13:18:45.697  INFO 5720 --- [restartedMain] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application ACADEMIA-CONFIGSRV with eureka with status UP
+2021-09-07 13:18:45.713  INFO 5720 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8888 (http) with context path ''
+2021-09-07 13:18:45.714  INFO 5720 --- [restartedMain] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8888
+2021-09-07 13:18:45.983  INFO 5720 --- [restartedMain] c.d.a.c.AcademiaConfigsrvApplication     : Started AcademiaConfigsrvApplication in 4.247 seconds (JVM running for 4.874)
+2021-09-07 13:26:19.118  INFO 5720 --- [Thread-10] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application ACADEMIA-CONFIGSRV with eureka with status DOWN
+2021-09-07 13:26:19.287  INFO 5720 --- [Thread-10] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-09-07 13:26:19.290  INFO 5720 --- [Thread-10] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2021-09-07 13:26:19.301  INFO 5720 --- [Thread-10] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
+2021-09-07 13:26:19.871  INFO 5720 --- [restartedMain] c.d.a.c.AcademiaConfigsrvApplication     : No active profile set, falling back to default profiles: default
+2021-09-07 13:26:20.154  INFO 5720 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=0893fc33-d152-3c2f-bd7e-0c0edaa8d262
+2021-09-07 13:26:20.241  INFO 5720 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8888 (http)
+2021-09-07 13:26:20.242  INFO 5720 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-09-07 13:26:20.242  INFO 5720 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2021-09-07 13:26:20.255  INFO 5720 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-09-07 13:26:20.255  INFO 5720 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 382 ms
+2021-09-07 13:26:20.294  WARN 5720 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-09-07 13:26:20.294  INFO 5720 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-09-07 13:26:20.335  INFO 5720 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-09-07 13:26:20.708  INFO 5720 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-09-07 13:26:20.921  WARN 5720 --- [restartedMain] ockingLoadBalancerClientRibbonWarnLogger : You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2021-09-07 13:26:20.945  INFO 5720 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2021-09-07 13:26:20.969  INFO 5720 --- [restartedMain] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2021-09-07 13:26:20.970  INFO 5720 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region default
+2021-09-07 13:26:20.970  INFO 5720 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Client configured to neither register nor query for data.
+2021-09-07 13:26:20.970  INFO 5720 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1631013980970 with initial instances count: 0
+2021-09-07 13:26:20.975  INFO 5720 --- [restartedMain] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application ACADEMIA-CONFIGSRV with eureka with status UP
+2021-09-07 13:26:20.989  INFO 5720 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8888 (http) with context path ''
+2021-09-07 13:26:20.989  INFO 5720 --- [restartedMain] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8888
+2021-09-07 13:26:21.193  INFO 5720 --- [restartedMain] c.d.a.c.AcademiaConfigsrvApplication     : Started AcademiaConfigsrvApplication in 1.79 seconds (JVM running for 460.085)
+2021-09-07 13:26:21.197  INFO 5720 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2021-09-07 13:37:59.086  INFO 5720 --- [RMI TCP Connection(2)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2021-09-07 13:37:59.088  INFO 5720 --- [RMI TCP Connection(2)-127.0.0.1] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application ACADEMIA-CONFIGSRV with eureka with status DOWN
+2021-09-07 13:37:59.220  INFO 5720 --- [RMI TCP Connection(2)-127.0.0.1] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2021-09-07 13:37:59.225  INFO 5720 --- [RMI TCP Connection(3)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2021-09-07 13:37:59.230  INFO 5720 --- [RMI TCP Connection(2)-127.0.0.1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-09-07 13:37:59.231  INFO 5720 --- [RMI TCP Connection(2)-127.0.0.1] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2021-09-07 13:37:59.232  INFO 5720 --- [RMI TCP Connection(2)-127.0.0.1] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
+2021-09-07 13:38:32.999  INFO 12612 --- [restartedMain] c.d.a.c.AcademiaConfigsrvApplication     : No active profile set, falling back to default profiles: default
+2021-09-07 13:38:33.614  WARN 12612 --- [restartedMain] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2021-09-07 13:38:33.716  INFO 12612 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=0893fc33-d152-3c2f-bd7e-0c0edaa8d262
+2021-09-07 13:38:34.111  INFO 12612 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8888 (http)
+2021-09-07 13:38:34.122  INFO 12612 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-09-07 13:38:34.122  INFO 12612 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2021-09-07 13:38:34.225  INFO 12612 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-09-07 13:38:34.225  INFO 12612 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1215 ms
+2021-09-07 13:38:34.297  WARN 12612 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-09-07 13:38:34.298  INFO 12612 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-09-07 13:38:34.307  INFO 12612 --- [restartedMain] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@751deabe
+2021-09-07 13:38:34.409  WARN 12612 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-09-07 13:38:34.409  INFO 12612 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-09-07 13:38:34.650  INFO 12612 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-09-07 13:38:35.474  INFO 12612 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-09-07 13:38:35.749  WARN 12612 --- [restartedMain] ockingLoadBalancerClientRibbonWarnLogger : You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2021-09-07 13:38:35.792  INFO 12612 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2021-09-07 13:38:35.847  INFO 12612 --- [restartedMain] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2021-09-07 13:38:35.867  INFO 12612 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region default
+2021-09-07 13:38:35.868  INFO 12612 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Client configured to neither register nor query for data.
+2021-09-07 13:38:35.872  INFO 12612 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1631014715871 with initial instances count: 0
+2021-09-07 13:38:35.875  INFO 12612 --- [restartedMain] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application ACADEMIA-CONFIGSRV with eureka with status UP
+2021-09-07 13:38:35.891  INFO 12612 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8888 (http) with context path ''
+2021-09-07 13:38:35.892  INFO 12612 --- [restartedMain] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8888
+2021-09-07 13:38:36.152  INFO 12612 --- [restartedMain] c.d.a.c.AcademiaConfigsrvApplication     : Started AcademiaConfigsrvApplication in 4.187 seconds (JVM running for 4.846)
+2021-09-07 13:39:01.742  INFO 12612 --- [RMI TCP Connection(2)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2021-09-07 13:39:01.744  INFO 12612 --- [RMI TCP Connection(2)-127.0.0.1] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application ACADEMIA-CONFIGSRV with eureka with status DOWN
+2021-09-07 13:39:01.885  INFO 12612 --- [RMI TCP Connection(2)-127.0.0.1] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2021-09-07 13:39:01.898  INFO 12612 --- [RMI TCP Connection(2)-127.0.0.1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-09-07 13:39:01.900  INFO 12612 --- [RMI TCP Connection(2)-127.0.0.1] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2021-09-07 13:39:01.908  INFO 12612 --- [RMI TCP Connection(2)-127.0.0.1] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
+2021-09-07 18:35:09.549  INFO 23560 --- [restartedMain] c.d.a.c.AcademiaConfigsrvApplication     : No active profile set, falling back to default profiles: default
+2021-09-07 18:35:10.176  WARN 23560 --- [restartedMain] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2021-09-07 18:35:10.287  INFO 23560 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=0893fc33-d152-3c2f-bd7e-0c0edaa8d262
+2021-09-07 18:35:10.684  INFO 23560 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8888 (http)
+2021-09-07 18:35:10.692  INFO 23560 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-09-07 18:35:10.692  INFO 23560 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2021-09-07 18:35:10.776  INFO 23560 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-09-07 18:35:10.776  INFO 23560 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1217 ms
+2021-09-07 18:35:10.831  WARN 23560 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-09-07 18:35:10.831  INFO 23560 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-09-07 18:35:10.840  INFO 23560 --- [restartedMain] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@6a5a90d1
+2021-09-07 18:35:10.916  WARN 23560 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-09-07 18:35:10.916  INFO 23560 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-09-07 18:35:11.126  INFO 23560 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-09-07 18:35:11.852  INFO 23560 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-09-07 18:35:12.130  WARN 23560 --- [restartedMain] ockingLoadBalancerClientRibbonWarnLogger : You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2021-09-07 18:35:12.163  INFO 23560 --- [RMI TCP Connection(2)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2021-09-07 18:35:12.182  INFO 23560 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2021-09-07 18:35:12.236  INFO 23560 --- [restartedMain] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2021-09-07 18:35:12.258  INFO 23560 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region default
+2021-09-07 18:35:12.259  INFO 23560 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Client configured to neither register nor query for data.
+2021-09-07 18:35:12.263  INFO 23560 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1631032512263 with initial instances count: 0
+2021-09-07 18:35:12.266  INFO 23560 --- [restartedMain] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application ACADEMIA-CONFIGSRV with eureka with status UP
+2021-09-07 18:35:12.283  INFO 23560 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8888 (http) with context path ''
+2021-09-07 18:35:12.284  INFO 23560 --- [restartedMain] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8888
+2021-09-07 18:35:12.364  INFO 23560 --- [RMI TCP Connection(3)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2021-09-07 18:35:12.548  INFO 23560 --- [RMI TCP Connection(3)-127.0.0.1] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application ACADEMIA-CONFIGSRV with eureka with status DOWN
+2021-09-07 18:35:12.548  INFO 23560 --- [restartedMain] c.d.a.c.AcademiaConfigsrvApplication     : Started AcademiaConfigsrvApplication in 4.039 seconds (JVM running for 4.702)
+2021-09-07 18:35:12.725  INFO 23560 --- [RMI TCP Connection(3)-127.0.0.1] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2021-09-07 18:35:12.732  INFO 23560 --- [RMI TCP Connection(3)-127.0.0.1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-09-07 18:35:12.734  INFO 23560 --- [RMI TCP Connection(3)-127.0.0.1] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2021-09-07 18:35:12.739  INFO 23560 --- [RMI TCP Connection(3)-127.0.0.1] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient

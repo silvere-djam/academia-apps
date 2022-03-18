@@ -14,8 +14,8 @@
 	<name>academia-security</name>
 	<description>Academia security data project for Spring Boot</description>
 	<properties>
-		<java.version>1.8</java.version>
-		<spring-cloud.version>Hoxton.SR9</spring-cloud.version>
+		<java.version>17</java.version>
+		<spring-cloud.version>Hoxton.SR7</spring-cloud.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -57,6 +57,10 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 		<dependency>
     		<groupId>org.springframework.boot</groupId>
@@ -113,5 +117,35 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>dockerfile-maven-plugin</artifactId>
+				 <version>1.4.8</version>
+				<configuration>
+					<repository>deepdreamapps/academia-security</repository>
+					<tag>${project.version}</tag>
+					<buildArg>
+						<JAR_FILE>target/${project.build.finalName}-${project.version}.jar</JAR_FILE>
+					</buildArg>
+					<useMavenSettingsForAuth>true</useMavenSettingsForAuth>
+				</configuration>
+				<executions>
+					<execution>
+						<id>default</id>
+						<phase>install</phase>
+						<goals>
+							<goal>build</goal>
+							<goal>push</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>

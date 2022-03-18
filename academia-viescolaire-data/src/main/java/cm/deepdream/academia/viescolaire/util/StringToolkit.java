@@ -1,9 +1,9 @@
 package cm.deepdream.academia.viescolaire.util;
 import java.text.Normalizer;
+
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-import antlr.StringUtils;
 
 public class StringToolkit {
 	private static StringToolkit stringToolkit ;

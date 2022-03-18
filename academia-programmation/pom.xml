@@ -14,8 +14,8 @@
 	<name>academia-programmation</name>
 	<description>Academia programmation project for Spring Boot</description>
 	<properties>
-		<java.version>1.8</java.version>
-		<spring-cloud.version>Hoxton.SR9</spring-cloud.version>
+		<java.version>17</java.version>
+		<spring-cloud.version>Hoxton.SR7</spring-cloud.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -114,6 +114,29 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>dockerfile-maven-plugin</artifactId>
+				 <version>1.4.8</version>
+				<configuration>
+					<repository>deepdreamapps/academia-programmation</repository>
+					<tag>${project.version}</tag>
+					<buildArg>
+						<JAR_FILE>target/${project.build.finalName}-${project.version}.jar</JAR_FILE>
+					</buildArg>
+					<useMavenSettingsForAuth>true</useMavenSettingsForAuth>
+				</configuration>
+				<executions>
+					<execution>
+						<id>default</id>
+						<phase>install</phase>
+						<goals>
+							<goal>build</goal>
+							<goal>push</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
