@@ -10,10 +10,10 @@ import cm.deepdream.academia.souscription.repository.EtablissementRepository;
 import cm.deepdream.academia.souscription.util.FileStore;
 import cm.deepdream.academia.souscription.util.LocalFileStore;
 import cm.deepdream.academia.souscription.util.SerializerToolkit;
-import cm.deepdream.academia.souscription.data.Etablissement;
-import cm.deepdream.academia.souscription.data.Logo;
 import cm.deepdream.academia.souscription.enums.Action;
 import cm.deepdream.academia.souscription.messages.Document;
+import cm.deepdream.academia.souscription.model.Etablissement;
+import cm.deepdream.academia.souscription.model.Logo;
 import cm.deepdream.academia.souscription.dao.SequenceDAO;
 import cm.deepdream.academia.souscription.producer.DocumentProducer;
 @Transactional

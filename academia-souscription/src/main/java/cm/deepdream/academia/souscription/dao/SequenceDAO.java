@@ -4,9 +4,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import org.springframework.stereotype.Component;
-import cm.deepdream.academia.souscription.data.Etablissement;
-import cm.deepdream.academia.souscription.data.Sequence;
-import cm.deepdream.academia.souscription.data.SequenceGlobale;
+
+import cm.deepdream.academia.souscription.model.Etablissement;
+import cm.deepdream.academia.souscription.model.Sequence;
+import cm.deepdream.academia.souscription.model.SequenceGlobale;
 
 @Component
 public class SequenceDAO {

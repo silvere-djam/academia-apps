@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import cm.deepdream.academia.souscription.repository.LocaliteRepository;
 import cm.deepdream.academia.souscription.dao.SequenceDAO;
-import cm.deepdream.academia.souscription.data.Etablissement;
-import cm.deepdream.academia.souscription.data.Localite;
+import cm.deepdream.academia.souscription.model.Etablissement;
+import cm.deepdream.academia.souscription.model.Localite;
 @Service
 @Transactional
 public class LocaliteService {

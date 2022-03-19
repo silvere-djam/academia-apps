@@ -16,8 +16,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import cm.deepdream.academia.souscription.repository.OffreRepository;
 import cm.deepdream.academia.souscription.dao.SequenceDAO;
-import cm.deepdream.academia.souscription.data.Localite;
-import cm.deepdream.academia.souscription.data.Offre;
+import cm.deepdream.academia.souscription.model.Localite;
+import cm.deepdream.academia.souscription.model.Offre;
 @Service
 @Transactional
 public class OffreService {

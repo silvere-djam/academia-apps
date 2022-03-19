@@ -14,8 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import cm.deepdream.academia.souscription.data.Etablissement;
-import cm.deepdream.academia.souscription.data.Logo;
+
+import cm.deepdream.academia.souscription.model.Etablissement;
+import cm.deepdream.academia.souscription.model.Logo;
 import cm.deepdream.academia.souscription.service.EtablissementService;
 import cm.deepdream.academia.souscription.util.FileStore;
 import cm.deepdream.academia.souscription.util.LocalFileStore;

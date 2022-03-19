@@ -4,8 +4,9 @@ import java.time.LocalDate;
 import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import cm.deepdream.academia.souscription.data.Etablissement;
-import cm.deepdream.academia.souscription.data.Abonnement;
+
+import cm.deepdream.academia.souscription.model.Abonnement;
+import cm.deepdream.academia.souscription.model.Etablissement;
 @Repository
 public interface AbonnementRepository extends CrudRepository<Abonnement, Long>{
 	public List<Abonnement> findByEtablissement (Etablissement etablissement) ;

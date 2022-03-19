@@ -13,8 +13,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import cm.deepdream.academia.souscription.data.Abonnement;
-import cm.deepdream.academia.souscription.data.Etablissement;
+
+import cm.deepdream.academia.souscription.model.Abonnement;
+import cm.deepdream.academia.souscription.model.Etablissement;
 import cm.deepdream.academia.souscription.service.AbonnementService;
 import cm.deepdream.academia.souscription.service.EtablissementService;
 @RestController
@@ -48,7 +49,7 @@ public class AbonnementWS {
 		}
 	}
 	
-	@PutMapping("/maj")
+	@PutMapping("/modification")
 	public Abonnement modifier (@RequestBody Abonnement abonnement) {
 		try {
 			Abonnement abonnementMaj = abonnementService.modifier(abonnement) ;
@@ -59,7 +60,7 @@ public class AbonnementWS {
 		}
 	}
 	
-	@DeleteMapping("/suppr")
+	@DeleteMapping("/suppression")
 	public int suppr (@RequestBody Abonnement abonnement) {
 		try {
 			abonnementService.supprimer(abonnement) ;
