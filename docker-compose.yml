@@ -1,0 +1,62 @@
+version: "3"  
+services:
+    academia-postgres:
+        image: postgres:11-alpine
+        container_name: academia-postgres
+        restart: always
+        ports:
+            - 5432:5432
+        environment:
+            - POSTGRES_PASSWORD: academia
+            - POSTGRES_USER: academia
+        volumes:
+             - ./academia-volumes/postgre:/data/db
+        networks:
+            - academia-network
+        command: ["--bind_ip", "0.0.0.0"]
+    academia-souscription:
+        image: deepdreamapps/academia-souscription:0.0.1-SNAPSHOT
+        container_name: academia-souscription
+        ports:
+            - 9999:9999
+        environment: 
+            - SPRING_DATA_MONGODB_HOST=pridesoft-mongodb
+            - SPRING_DATA_MONGODB_PORT=27017
+            - SPRING_DATA_MONGODB_DATABASE=pridesoft
+            - APP_REMOTESRV_HOST=pridesoft-remotesrv
+            - APP_REMOTESRV_PORT=10000
+        depends_on: 
+            - pridesoft-remotesrv
+            - pridesoft-mongodb
+        networks:
+            - pridesoft-network
+        command: ["--bind_ip", "0.0.0.0"]
+    pridesoft-remotesrv:
+        image: deepdreamapps/pridesoft-remotesrv:0.0.1-SNAPSHOT
+        container_name: pridesoft-remotesrv
+        ports:
+            - 10000:10000
+        networks:
+            - pridesoft-network
+        command: ["--bind_ip", "0.0.0.0"]
+    pridesoft-web:
+        image: deepdreamapps/pridesoft-web:0.0.1-SNAPSHOT
+        container_name: pridesoft-web
+        ports:
+            - 8085:8085
+        environment:
+            - APP_LOCALSRV_HOST=pridesoft-localsrv
+            - APP_LOCALSRV_PORT=9999
+            - APP_REMOTESRV_HOST=pridesoft-remotesrv
+            - APP_REMOTESRV_PORT=10000
+        depends_on:
+            - pridesoft-remotesrv
+            - pridesoft-localsrv
+        networks:
+            - pridesoft-network
+        command: ["--bind_ip", "0.0.0.0"]
+networks:
+    pridesoft-network:
+        driver: bridge
+        
+        
