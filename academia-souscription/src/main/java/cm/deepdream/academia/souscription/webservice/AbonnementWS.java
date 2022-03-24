@@ -29,13 +29,7 @@ public class AbonnementWS {
 	
 	@PostMapping("/ajout")
 	public Abonnement ajouter (@RequestBody  Abonnement abonnement) {
-		try {
-			Abonnement abonnementCree = abonnementService.creer(abonnement) ;
-			return abonnementCree ;
-		}catch(Exception ex) {
-			logger.log (Level.SEVERE, ex.getMessage(), ex) ;
-			return null ;
-		}
+		return abonnementService.creer(abonnement) ;
 	}
 	
 	@PostMapping("/etablissement/ajout")

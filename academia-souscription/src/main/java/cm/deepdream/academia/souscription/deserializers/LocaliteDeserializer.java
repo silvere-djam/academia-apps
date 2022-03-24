@@ -28,10 +28,6 @@ public class LocaliteDeserializer extends JsonDeserializer<Localite>{
 		JsonNode node = jp.getCodec().readTree(jp);
 		Long id = node.get("id").asLong() ;
         String libelle = node.get("libelle").asText(); 
-        try {
-        	Pays pays = mapper.readValue(node.get("pays").toPrettyString(), Pays.class);
-        	ville.setPays(pays);
-        }catch(Exception ex) {}
         ville.setId(id);
         ville.setLibelle(libelle);
         

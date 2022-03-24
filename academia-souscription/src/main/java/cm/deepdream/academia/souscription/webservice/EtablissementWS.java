@@ -33,19 +33,13 @@ public class EtablissementWS {
 	private LocalFileStore localFileStore ;
 	
 	@PostMapping("/ajout")
-	public Etablissement ajout (@RequestBody  Etablissement etablissement) {
-		try {
-			Etablissement etablissementCree = etablissementService.creer(etablissement) ;
-			return etablissementCree ;
-		}catch(Exception ex) {
-			logger.log (Level.SEVERE, ex.getMessage(), ex) ;
-			return null ;
-		}
+	public Etablissement ajouter (@RequestBody  Etablissement etablissement) {
+		return etablissementService.creer(etablissement) ; 
 	}
 	
 	@PutMapping("/modification")
 	@ResponseStatus(code =  HttpStatus.OK)
-	public Etablissement maj (@RequestBody Etablissement etablissement) {
+	public Etablissement modifier (@RequestBody Etablissement etablissement) {
 		try {
 			Etablissement etablissementMaj = etablissementService.modifier(etablissement) ;
 			return etablissementMaj ;
@@ -55,52 +49,25 @@ public class EtablissementWS {
 		}
 	}
 	
-	@DeleteMapping("/suppr")
-	public int suppr (@RequestBody Etablissement etablissement) {
-		try {
-			etablissementService.supprimer(etablissement) ;
-			return 1 ;
-		}catch(Exception ex) {
-			logger.log (Level.SEVERE, ex.getMessage(), ex) ;
-			return 0 ;
-		}
+	@DeleteMapping("/suppression")
+	public void supprimer (@RequestBody Etablissement etablissement) {
+		etablissementService.supprimer(etablissement) ;
 	}
 	
 	@GetMapping("/id/{id}")
 	public Etablissement getById (@PathVariable("id") long id) {
-		try {
-			Etablissement etablissement = etablissementService.rechercher(id) ;
-			return etablissement  ;
-		}catch(Exception ex) {
-			logger.log (Level.SEVERE, ex.getMessage(), ex) ;
-			return null ;
-		}
+		return etablissementService.rechercher(id) ;
 	}
 	
 	@GetMapping("/logo/id/{id}")
 	public Logo getLogo (@PathVariable("id") Long id) {
-		try {
-			Etablissement etablissement = etablissementService.rechercher(id) ;
-			Logo logo = etablissement.getLogo() ;
-			byte[] logoBytes = etablissementService.download(logo) ;
-			logo.setBytes(logoBytes);
-			return logo  ;
-		}catch(Exception ex) {
-			logger.log (Level.SEVERE, ex.getMessage(), ex) ;
-			return null ;
-		}
+		return null ;
 	}
 	
 	
 	@GetMapping("/all")
 	public List<Etablissement> getAll () {
-		try {
-			List<Etablissement> liste = etablissementService.rechercher(new Etablissement()) ;
-			return liste  ;
-		}catch(Exception ex) {
-			logger.log (Level.SEVERE, ex.getMessage(), ex) ;
-			return new ArrayList<Etablissement>() ;
-		}
+		return etablissementService.rechercher(new Etablissement()) ; 
 	}
 	
 }
