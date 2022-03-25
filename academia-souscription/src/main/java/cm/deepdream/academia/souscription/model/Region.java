@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,6 +25,11 @@ public class Region implements Serializable{
 	@Column(name="id")
 	private Long id ;
 	
+	@NotBlank
+	@Column (name = "code")
+	private String code ;
+	
+	@NotBlank
 	@Column (name = "libelle")
 	private String libelle ;
 	

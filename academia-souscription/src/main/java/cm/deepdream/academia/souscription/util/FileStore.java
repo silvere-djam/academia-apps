@@ -20,7 +20,7 @@ import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.services.s3.model.S3ObjectInputStream;
 import com.amazonaws.util.IOUtils;
 
-@Component
+//@Component
 public class FileStore {
 	private Logger logger = Logger.getLogger(FileStore.class.getName()) ;
 	@Autowired

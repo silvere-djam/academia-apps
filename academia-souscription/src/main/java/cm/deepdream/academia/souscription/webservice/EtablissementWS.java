@@ -27,10 +27,8 @@ public class EtablissementWS {
 	private Logger logger = Logger.getLogger(EtablissementWS.class.getName()) ;
 	@Autowired
 	private EtablissementService etablissementService ;
-	@Autowired
-	private FileStore fileStore ;
-	@Autowired
-	private LocalFileStore localFileStore ;
+
+	
 	
 	@PostMapping("/ajout")
 	public Etablissement ajouter (@RequestBody  Etablissement etablissement) {

@@ -9,7 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class LocalFileStore {
 	private Logger logger = Logger.getLogger(LocalFileStore.class.getName()) ;
 

@@ -26,10 +26,10 @@ public class AcademiaSouscriptionTestConfiguration {
 	
 	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-		LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
-		emf.setDataSource(dataSource());
-		emf.setJpaVendorAdapter(jpaVendorAdapter());
-		return emf;
+		LocalContainerEntityManagerFactoryBean entityManagerFactory = new LocalContainerEntityManagerFactoryBean();
+		entityManagerFactory.setDataSource(dataSource());
+		entityManagerFactory.setJpaVendorAdapter(jpaVendorAdapter());
+		return entityManagerFactory ;
 	}
 	
 	
