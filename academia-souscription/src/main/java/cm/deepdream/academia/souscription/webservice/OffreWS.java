@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import cm.deepdream.academia.souscription.model.Offre;
 import cm.deepdream.academia.souscription.service.OffreService;
+import cm.deepdream.academia.souscription.transfert.OffreDTO;
 
 @RestController
 @RequestMapping("/ws/offre")
@@ -25,33 +26,33 @@ public class OffreWS {
 
 
 	@PostMapping("/ajout")
-	public Offre ajouter (@RequestBody  Offre offre) {
+	public OffreDTO ajouter (@RequestBody  OffreDTO offre) {
 		return offreService.creer(offre) ;
 	}
 	
 	
 	@PutMapping("/modification")
-	public Offre maj (@RequestBody Offre offre) {
+	public OffreDTO modifier (@RequestBody OffreDTO offre) {
 		return offreService.modifier(offre) ;
 	}
 	
 	
-	@DeleteMapping("/suppr")
-	public void supprimer (@RequestBody Offre offre) {
+	@DeleteMapping("/suppression")
+	public void supprimer (@RequestBody OffreDTO offre) {
 		offreService.supprimer(offre) ;
 	}
 	
 	
 	
 	@GetMapping("/id/{id}")
-	public Offre getById (@PathVariable("id") Long id) {
+	public OffreDTO getById (@PathVariable("id") Long id) {
 		return offreService.rechercher(id) ;
 	}
 	
 	
 	@GetMapping("/all")
-	public List<Offre> getAll () {
-		return  offreService.rechercherTout(new Offre()) ;
+	public List<OffreDTO> getAll () {
+		return  offreService.rechercherTout() ;
 	}
 	
 	
