@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import cm.deepdream.academia.souscription.model.Localite;
 import cm.deepdream.academia.souscription.service.LocaliteService;
+import cm.deepdream.academia.souscription.transfert.LocaliteDTO;
+import cm.deepdream.academia.souscription.transfert.RegionDTO;
 
 @RestController
 @RequestMapping("/ws/localite")
@@ -24,32 +25,39 @@ public class LocaliteWS {
 
 	
 	@PostMapping("/ajout")
-	public Localite ajouter (@RequestBody  Localite localite) {
+	public LocaliteDTO ajouter (@RequestBody  LocaliteDTO localite) {
 		return localiteService.creer(localite) ;
 	}
 	
 	
 	@PutMapping("/modification")
-	public Localite modifier (@RequestBody Localite localite) {
+	public LocaliteDTO modifier (@RequestBody LocaliteDTO localite) {
 		return localiteService.modifier(localite) ;
 	}
 	
 	
 	@DeleteMapping("/suppression")
-	public void suppr (@RequestBody Localite localite) {
+	public void supprimer (@RequestBody LocaliteDTO localite) {
 		localiteService.supprimer(localite) ;
 	}
 	
 	
 	@GetMapping("/id/{id}")
-	public Localite getById (@PathVariable("id") Long id) {
+	public LocaliteDTO getById (@PathVariable("id") Long id) {
 		return localiteService.rechercher(id) ;
 	}
 	
 	
+	@GetMapping("/region/{idRegion}")
+	public List<LocaliteDTO> getLocalitesRegion (@PathVariable ("idRegion") Long idRegion) {
+		RegionDTO regionDTO = RegionDTO.builder().id(idRegion).build() ;
+		return localiteService.rechercher(regionDTO) ;
+	}
+	
+	
 	@GetMapping("/all")
-	public List<Localite> getAll () {
-		return localiteService.rechercherTout(new Localite()) ;
+	public List<LocaliteDTO> getAll () {
+		return localiteService.rechercherTout() ;
 	}
 	
 }

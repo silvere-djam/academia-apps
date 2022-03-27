@@ -2098,3 +2098,69 @@ Caused by: org.postgresql.util.PSQLException: ERREUR: la colonne « 201001 » n'ex
 2022-03-26 11:23:08.062  INFO 16740 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2022-03-26 11:23:08.073  INFO 16740 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
 2022-03-26 11:23:08.095  INFO 16740 --- [SpringApplicationShutdownHook] org.ehcache.core.EhcacheManager          : Cache 'logoCache' removed from EhcacheManager.
+2022-03-26 12:38:52.913  INFO 9668 --- [main] c.d.a.s.w.PaysWebServiceIntegrationTest  : Starting PaysWebServiceIntegrationTest using Java 17 on DESKTOP-GHFU2V5 with PID 9668 (started by Gatien in C:\Users\Gatien\git\academia-apps\academia-souscription)
+2022-03-26 12:38:52.915  INFO 9668 --- [main] c.d.a.s.w.PaysWebServiceIntegrationTest  : No active profile set, falling back to default profiles: default
+2022-03-26 12:38:54.006  INFO 9668 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-03-26 12:38:54.105  INFO 9668 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 86 ms. Found 7 JPA repository interfaces.
+2022-03-26 12:38:56.187  INFO 9668 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
+2022-03-26 12:38:56.201  INFO 9668 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-03-26 12:38:56.201  INFO 9668 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.55]
+2022-03-26 12:38:56.441  INFO 9668 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-03-26 12:38:56.442  INFO 9668 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3480 ms
+2022-03-26 12:38:57.972  INFO 9668 --- [main] .e.s.o.t.o.p.UpfrontAllocatingPageSource : Allocating 50.0MB in chunks
+2022-03-26 12:38:58.015  INFO 9668 --- [main] org.ehcache.core.EhcacheManager          : Cache 'logoCache' created in EhcacheManager.
+2022-03-26 12:38:58.094  INFO 9668 --- [main] org.ehcache.jsr107.Eh107CacheManager     : Registering Ehcache MBean javax.cache:type=CacheStatistics,CacheManager=file./C./Users/Gatien/git/academia-apps/academia-souscription/target/test-classes/ehcache.xml,Cache=logoCache
+2022-03-26 12:38:58.111  INFO 9668 --- [main] org.ehcache.jsr107.Eh107CacheManager     : Registering Ehcache MBean javax.cache:type=CacheStatistics,CacheManager=file./C./Users/Gatien/git/academia-apps/academia-souscription/target/test-classes/ehcache.xml,Cache=logoCache
+2022-03-26 12:38:58.649  INFO 9668 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-03-26 12:38:58.824  INFO 9668 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-03-26 12:39:00.017  INFO 9668 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-03-26 12:39:01.396  WARN 9668 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-03-26 12:39:02.827  WARN 9668 --- [main] o.s.b.a.f.FreeMarkerAutoConfiguration    : Cannot find template location(s): [classpath:/templates] (please add some templates, check your FreeMarker configuration, or set spring.freemarker.checkTemplateLocation=false)
+2022-03-26 12:39:02.928  INFO 9668 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2022-03-26 12:39:03.420  INFO 9668 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 57971 (http) with context path ''
+2022-03-26 12:39:03.444  INFO 9668 --- [main] c.d.a.s.w.PaysWebServiceIntegrationTest  : Started PaysWebServiceIntegrationTest in 10.964 seconds (JVM running for 14.244)
+2022-03-26 12:39:03.787  INFO 9668 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-03-26 12:39:03.788  INFO 9668 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-03-26 12:39:03.789  INFO 9668 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-03-26 12:39:04.927  INFO 9668 --- [main] .d.a.s.w.RegionWebServiceIntegrationTest : regionDTO_Return = RegionDTO(id=2, code=NO, libelle=NORD, idPays=1000000005, codePays=CM) Status Code = 200
+2022-03-26 12:39:04.959  INFO 9668 --- [main] .d.a.s.w.RegionWebServiceIntegrationTest : regionDTO_Return = RegionDTO(id=1000000003, code=CE, libelle=CENTRE, idPays=1000000008, codePays=CM) Status Code = 200
+2022-03-26 12:39:05.099  INFO 9668 --- [main] s.w.ResponsableWebServiceIntegrationTest : tester_rechercherResponsable_avecDonneesValides.responsableDTO_Entry = ResponsableDTO(id=1000000002, matricule=202201, nom=Molemb, prenom=Cyrille, sexe=Homme, dateNaissance=1990-09-25, lieuNaissance=Douala, datePriseService=2022-04-10, telephone=+237698037324, email=cyrille.molemb@gmail.com), Status Code=200 OK
+2022-03-26 12:39:05.168  INFO 9668 --- [main] s.w.ResponsableWebServiceIntegrationTest : tester_modifierResponsable_avecDonneesValides.responsableDTO_Entry = ResponsableDTO(id=1000000000, matricule=201701, nom=Djamilaa, prenom=Silverine, sexe=Femme, dateNaissance=1995-09-10, lieuNaissance=Lable, datePriseService=2017-04-10, telephone=+237698037323, email=silverine.djamilaa@gmail.com), Status Code=200 OK
+2022-03-26 12:39:05.197  INFO 9668 --- [main] s.w.ResponsableWebServiceIntegrationTest : tester_creerResponsable_avecDonneesValides.responsableDTO_Entry = ResponsableDTO(id=3, matricule=201001, nom=Baliaba, prenom=Gatien, sexe=Homme, dateNaissance=1990-09-25, lieuNaissance=Lable, datePriseService=2010-04-10, telephone=+237698037324, email=silvere.djam@gmail.com)
+2022-03-26 12:39:05.378  INFO 9668 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-03-26 12:39:05.462  INFO 9668 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-03-26 12:39:05.471  INFO 9668 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-03-26 12:39:05.486  INFO 9668 --- [SpringApplicationShutdownHook] org.ehcache.core.EhcacheManager          : Cache 'logoCache' removed from EhcacheManager.
+2022-03-26 15:17:05.543  INFO 16880 --- [main] c.d.a.s.w.PaysWebServiceIntegrationTest  : Starting PaysWebServiceIntegrationTest using Java 17 on DESKTOP-GHFU2V5 with PID 16880 (started by Gatien in C:\Users\Gatien\git\academia-apps\academia-souscription)
+2022-03-26 15:17:05.545  INFO 16880 --- [main] c.d.a.s.w.PaysWebServiceIntegrationTest  : No active profile set, falling back to default profiles: default
+2022-03-26 15:17:06.354  INFO 16880 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-03-26 15:17:06.428  INFO 16880 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 63 ms. Found 7 JPA repository interfaces.
+2022-03-26 15:17:07.971  INFO 16880 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
+2022-03-26 15:17:07.983  INFO 16880 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-03-26 15:17:07.984  INFO 16880 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.55]
+2022-03-26 15:17:08.167  INFO 16880 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-03-26 15:17:08.168  INFO 16880 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2584 ms
+2022-03-26 15:17:09.226  INFO 16880 --- [main] .e.s.o.t.o.p.UpfrontAllocatingPageSource : Allocating 50.0MB in chunks
+2022-03-26 15:17:09.270  INFO 16880 --- [main] org.ehcache.core.EhcacheManager          : Cache 'logoCache' created in EhcacheManager.
+2022-03-26 15:17:09.341  INFO 16880 --- [main] org.ehcache.jsr107.Eh107CacheManager     : Registering Ehcache MBean javax.cache:type=CacheStatistics,CacheManager=file./C./Users/Gatien/git/academia-apps/academia-souscription/target/test-classes/ehcache.xml,Cache=logoCache
+2022-03-26 15:17:09.360  INFO 16880 --- [main] org.ehcache.jsr107.Eh107CacheManager     : Registering Ehcache MBean javax.cache:type=CacheStatistics,CacheManager=file./C./Users/Gatien/git/academia-apps/academia-souscription/target/test-classes/ehcache.xml,Cache=logoCache
+2022-03-26 15:17:09.818  INFO 16880 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-03-26 15:17:09.963  INFO 16880 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-03-26 15:17:10.899  INFO 16880 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-03-26 15:17:12.197  WARN 16880 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-03-26 15:17:13.867  WARN 16880 --- [main] o.s.b.a.f.FreeMarkerAutoConfiguration    : Cannot find template location(s): [classpath:/templates] (please add some templates, check your FreeMarker configuration, or set spring.freemarker.checkTemplateLocation=false)
+2022-03-26 15:17:14.037  INFO 16880 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2022-03-26 15:17:14.597  INFO 16880 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 61690 (http) with context path ''
+2022-03-26 15:17:14.617  INFO 16880 --- [main] c.d.a.s.w.PaysWebServiceIntegrationTest  : Started PaysWebServiceIntegrationTest in 9.412 seconds (JVM running for 11.814)
+2022-03-26 15:17:14.993  INFO 16880 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-03-26 15:17:14.994  INFO 16880 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-03-26 15:17:14.996  INFO 16880 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2022-03-26 15:17:15.697  INFO 16880 --- [main] .d.a.s.w.RegionWebServiceIntegrationTest : regionDTO_Return = RegionDTO(id=2, code=NO, libelle=NORD, idPays=1000000005, codePays=CM) Status Code = 200
+2022-03-26 15:17:15.721  INFO 16880 --- [main] .d.a.s.w.RegionWebServiceIntegrationTest : regionDTO_Return = RegionDTO(id=1000000003, code=CE, libelle=CENTRE, idPays=1000000008, codePays=CM) Status Code = 200
+2022-03-26 15:17:15.814  INFO 16880 --- [main] s.w.ResponsableWebServiceIntegrationTest : tester_rechercherResponsable_avecDonneesValides.responsableDTO_Entry = ResponsableDTO(id=1000000002, matricule=202201, nom=Molemb, prenom=Cyrille, sexe=Homme, dateNaissance=1990-09-25, lieuNaissance=Douala, datePriseService=2022-04-10, telephone=+237698037324, email=cyrille.molemb@gmail.com), Status Code=200 OK
+2022-03-26 15:17:15.884  INFO 16880 --- [main] s.w.ResponsableWebServiceIntegrationTest : tester_modifierResponsable_avecDonneesValides.responsableDTO_Entry = ResponsableDTO(id=1000000000, matricule=201701, nom=Djamilaa, prenom=Silverine, sexe=Femme, dateNaissance=1995-09-10, lieuNaissance=Lable, datePriseService=2017-04-10, telephone=+237698037323, email=silverine.djamilaa@gmail.com), Status Code=200 OK
+2022-03-26 15:17:15.912  INFO 16880 --- [main] s.w.ResponsableWebServiceIntegrationTest : tester_creerResponsable_avecDonneesValides.responsableDTO_Entry = ResponsableDTO(id=3, matricule=201001, nom=Baliaba, prenom=Gatien, sexe=Homme, dateNaissance=1990-09-25, lieuNaissance=Lable, datePriseService=2010-04-10, telephone=+237698037324, email=silvere.djam@gmail.com)
+2022-03-26 15:17:16.040  INFO 16880 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-03-26 15:17:16.117  INFO 16880 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-03-26 15:17:16.125  INFO 16880 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-03-26 15:17:16.140  INFO 16880 --- [SpringApplicationShutdownHook] org.ehcache.core.EhcacheManager          : Cache 'logoCache' removed from EhcacheManager.

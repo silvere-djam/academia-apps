@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import cm.deepdream.academia.souscription.model.Offre;
 import cm.deepdream.academia.souscription.service.OffreService;
 import cm.deepdream.academia.souscription.transfert.OffreDTO;
 
