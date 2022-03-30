@@ -55,8 +55,10 @@ public class ResponsableWebServiceIntegrationTest {
 		ResponsableDTO responsableDTO_Return = response.getBody() ;
 		
 		log.info("tester_creerResponsable_avecDonneesValides.responsableDTO_Entry = "+responsableDTO_Return) ;
+		
+		Assertions.assertNotNull(responsableDTO_Return.getId()) ;
 
-		Assertions.assertTrue(response.getStatusCode() == HttpStatus.OK && responsableDTO_Return.getId() != null
+		Assertions.assertTrue(response.getStatusCode() == HttpStatus.OK
 				&& matricule.equals(responsableDTO_Return.getMatricule())
 				&& nom.equals(responsableDTO_Return.getNom())
 				&& prenom.equals(responsableDTO_Return.getPrenom())
