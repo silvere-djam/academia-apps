@@ -4,5 +4,5 @@ import org.springframework.stereotype.Repository;
 import cm.deepdream.academia.souscription.model.Responsable;
 @Repository
 public interface ResponsableRepository extends CrudRepository<Responsable, Long>{
-
+	public Boolean existsByMatricule (String matricule) ;
 }

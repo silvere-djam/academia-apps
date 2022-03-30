@@ -1,7 +1,5 @@
 package cm.deepdream.academia.souscription.webservice;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,11 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import cm.deepdream.academia.souscription.model.Etablissement;
 import cm.deepdream.academia.souscription.model.Logo;
 import cm.deepdream.academia.souscription.service.EtablissementService;
-import cm.deepdream.academia.souscription.util.FileStore;
-import cm.deepdream.academia.souscription.util.LocalFileStore;
+import cm.deepdream.academia.souscription.transfert.EtablissementDTO;
 
 @RestController
 @RequestMapping("/ws/etablissement")
@@ -31,29 +27,23 @@ public class EtablissementWS {
 	
 	
 	@PostMapping("/ajout")
-	public Etablissement ajouter (@RequestBody  Etablissement etablissement) {
+	public EtablissementDTO ajouter (@RequestBody  EtablissementDTO etablissement) {
 		return etablissementService.creer(etablissement) ; 
 	}
 	
 	@PutMapping("/modification")
 	@ResponseStatus(code =  HttpStatus.OK)
-	public Etablissement modifier (@RequestBody Etablissement etablissement) {
-		try {
-			Etablissement etablissementMaj = etablissementService.modifier(etablissement) ;
-			return etablissementMaj ;
-		}catch(Exception ex) {
-			logger.log (Level.SEVERE, ex.getMessage(), ex) ;
-			return null ;
-		}
+	public EtablissementDTO modifier (@RequestBody EtablissementDTO etablissement) {
+		return etablissementService.modifier(etablissement) ;
 	}
 	
 	@DeleteMapping("/suppression")
-	public void supprimer (@RequestBody Etablissement etablissement) {
+	public void supprimer (@RequestBody EtablissementDTO etablissement) {
 		etablissementService.supprimer(etablissement) ;
 	}
 	
 	@GetMapping("/id/{id}")
-	public Etablissement getById (@PathVariable("id") long id) {
+	public EtablissementDTO getById (@PathVariable("id") Long id) {
 		return etablissementService.rechercher(id) ;
 	}
 	
@@ -64,8 +54,8 @@ public class EtablissementWS {
 	
 	
 	@GetMapping("/all")
-	public List<Etablissement> getAll () {
-		return etablissementService.rechercher(new Etablissement()) ; 
+	public List<EtablissementDTO> getAll () {
+		return etablissementService.rechercherTout() ; 
 	}
 	
 }

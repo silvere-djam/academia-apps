@@ -6,12 +6,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 @Entity
 @Data
+@Builder
 @EqualsAndHashCode(callSuper = false)
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,12 +26,15 @@ public class Etablissement implements Serializable{
 	@Column(name="id")
 	private Long id ;
 	
+	@NotBlank
 	@Column (name = "libelle")
 	private String libelle ;
 	
+	@NotBlank
 	@Column (name = "telephone")
 	private String telephone ;
 	
+	@Email
 	@Column (name = "email")
 	private String email ;
 	
@@ -42,6 +50,5 @@ public class Etablissement implements Serializable{
 	@ManyToOne
 	@JoinColumn (name = "id_localite")
 	private Localite localite ;
-
 	
 }

@@ -6,7 +6,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import cm.deepdream.academia.souscription.repository.ResponsableRepository;
 import cm.deepdream.academia.souscription.transfert.ResponsableDTO;
+import cm.deepdream.academia.souscription.exceptions.ResponsableDuplicationException;
 import cm.deepdream.academia.souscription.exceptions.ResponsableNotFoundException;
+import cm.deepdream.academia.souscription.model.Etablissement;
 import cm.deepdream.academia.souscription.model.Responsable;
 
 @Service
@@ -21,6 +23,9 @@ public class ResponsableService {
 
 
 	public ResponsableDTO creer (ResponsableDTO responsableDTO) {
+		if(responsableRepository.existsByMatricule(responsableDTO.getMatricule())) {
+			throw new ResponsableDuplicationException(String.valueOf(responsableDTO)) ;
+		}
 		Responsable responsableEntry = this.transformer(responsableDTO) ;
 		Responsable responsableReturn = responsableRepository.save(responsableEntry) ;
 		return this.transformer(responsableReturn) ;
@@ -88,17 +93,21 @@ public class ResponsableService {
 					.nom(responsable.getNom()).prenom(responsable.getPrenom()).sexe(responsable.getSexe())
 					.dateNaissance(responsable.getDateNaissance()).lieuNaissance(responsable.getLieuNaissance())
 					.datePriseService(responsable.getDatePriseService()).telephone(responsable.getTelephone())
-					.email(responsable.getEmail()).build() ;
+					.email(responsable.getEmail())
+					.idEtablissement(responsable == null ? null : responsable.getEtablissement().getId())
+					.libelleEtablissement(responsable == null ? null : responsable.getEtablissement().getLibelle()).build() ;
 					
 	}
 	
 	
 	private Responsable transformer(ResponsableDTO responsableDTO) {
+		Etablissement etablissement = responsableDTO.getIdEtablissement() == null ? null : 
+				Etablissement.builder().id(responsableDTO.getIdEtablissement()).libelle(responsableDTO.getLibelleEtablissement()).build() ;
 		return Responsable.builder().id(responsableDTO.getId()).matricule(responsableDTO.getMatricule())
 					.nom(responsableDTO.getNom()).prenom(responsableDTO.getPrenom()).sexe(responsableDTO.getSexe())
 					.dateNaissance(responsableDTO.getDateNaissance()).lieuNaissance(responsableDTO.getLieuNaissance())
 					.datePriseService(responsableDTO.getDatePriseService()).telephone(responsableDTO.getTelephone())
-					.email(responsableDTO.getEmail()).build() ;
+					.email(responsableDTO.getEmail()).etablissement(etablissement).build() ;
 					
 	}
 }

@@ -9,4 +9,5 @@ import cm.deepdream.academia.souscription.model.Region;
 @Repository
 public interface LocaliteRepository extends CrudRepository<Localite, Long>{
 	public List<Localite> findByRegion (Region region) ;
+	public Boolean existsByLibelle(String libelle) ;
 }

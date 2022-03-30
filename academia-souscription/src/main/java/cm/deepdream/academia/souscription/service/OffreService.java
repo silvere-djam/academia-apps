@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import cm.deepdream.academia.souscription.repository.OffreRepository;
 import cm.deepdream.academia.souscription.transfert.OffreDTO;
+import cm.deepdream.academia.souscription.exceptions.OffreDuplicationException;
 import cm.deepdream.academia.souscription.exceptions.OffreNotFoundException;
 import cm.deepdream.academia.souscription.model.Offre;
 
@@ -22,6 +23,9 @@ public class OffreService {
 
 	
 	public OffreDTO creer (OffreDTO offreDTO) {
+		if(offreRepository.existsByLibelle(offreDTO.getLibelle())) {
+			throw new OffreDuplicationException(String.valueOf(offreDTO)) ;
+		}
 		Offre offreEntry = this.transformer(offreDTO) ;
 		Offre offreReturn = offreRepository.save(offreEntry) ;
 		return this.transformer(offreReturn) ;

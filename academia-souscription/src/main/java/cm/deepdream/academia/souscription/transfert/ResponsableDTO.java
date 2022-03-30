@@ -32,5 +32,9 @@ public class ResponsableDTO implements Serializable{
 	private String telephone ;
 
 	private String email ;
+	
+	private Long idEtablissement ;
+	
+	private String libelleEtablissement ;
 
 }

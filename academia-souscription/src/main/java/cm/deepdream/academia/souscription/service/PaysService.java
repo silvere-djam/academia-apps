@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import cm.deepdream.academia.souscription.repository.PaysRepository;
 import cm.deepdream.academia.souscription.transfert.PaysDTO;
+import cm.deepdream.academia.souscription.exceptions.PaysDuplicationException;
 import cm.deepdream.academia.souscription.exceptions.PaysNotFoundException;
 import cm.deepdream.academia.souscription.model.Pays;
 
@@ -22,6 +23,9 @@ public class PaysService {
 
 
 	public PaysDTO creer (PaysDTO paysDTO) {
+		if(paysRepository.existsByLibelle(paysDTO.getLibelle())) {
+			throw new PaysDuplicationException(String.valueOf(paysDTO)) ;
+		}
 		Pays paysEntry = this.transformer(paysDTO) ;
 		Pays paysReturn = paysRepository.save(paysEntry) ;
 		return this.transformer(paysReturn) ;

@@ -8,4 +8,5 @@ import cm.deepdream.academia.souscription.model.Offre;
 public interface OffreRepository extends CrudRepository<Offre, Long>{
 	public List<Offre> findByMaxElevesGreaterThanEqual(Integer nbEleves) ;
 	public List<Offre> findByMinElevesLessThanEqualAndMaxElevesGreaterThanEqualOrderByMinElevesAsc(Integer minEleves, Integer maxEleves) ;
+	public Boolean existsByLibelle(String libelle) ;
 }

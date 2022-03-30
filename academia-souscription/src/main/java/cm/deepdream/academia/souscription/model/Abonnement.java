@@ -1,5 +1,8 @@
 package cm.deepdream.academia.souscription.model;
+import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,15 +15,17 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 @Entity
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public class Abonnement extends EntiteGenerique{
+public class Abonnement implements Serializable{
 	@Id
 	@GeneratedValue
 	@Column(name="id")
@@ -59,5 +64,15 @@ public class Abonnement extends EntiteGenerique{
 	@JoinColumn (name = "id_offre")
 	private Offre offre ;
 	
+	@Column(name = "date_creation")
+	private LocalDateTime dateCreation ;
 	
+	@Column(name = "date_dern_maj")
+	private LocalDateTime dateDernMaj ;
+	
+	@Column(name = "createur")
+	private String createur ;
+	
+	@Column(name = "modificateur")
+	private String modificateur ;
 }

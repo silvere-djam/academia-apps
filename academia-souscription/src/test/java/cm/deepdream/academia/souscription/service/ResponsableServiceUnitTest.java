@@ -1,9 +1,12 @@
 package cm.deepdream.academia.souscription.service;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import cm.deepdream.academia.souscription.model.Etablissement;
 import cm.deepdream.academia.souscription.model.Responsable;
 import cm.deepdream.academia.souscription.repository.ResponsableRepository;
 import cm.deepdream.academia.souscription.transfert.ResponsableDTO;
@@ -12,13 +15,16 @@ import static org.mockito.Mockito.* ;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.Random ;
-@RunWith(SpringRunner.class)
+
+@ExtendWith(MockitoExtension.class)
 public class ResponsableServiceUnitTest {
-	@MockBean
+	@Mock
 	private ResponsableRepository responsableRepository  ;
+	@InjectMocks
+	private ResponsableService responsableService ;
 	
 	@Test
-	public void tester_creerPays_avecDonneesValides() {
+	public void tester_creerResponsable_avecDonneesValides() {
 		final String matricule = "201001" ;
 		final String nom = "Baliaba" ;
 		final String prenom = "Gatien" ;
@@ -28,34 +34,34 @@ public class ResponsableServiceUnitTest {
 		final LocalDate datePriseService = LocalDate.of(2010, Month.APRIL, 10) ;
 		final String telephone = "+237698037324" ;
 		final String email = "silvere.djam@gmail.com" ;
+		final Long idEtablissement = 1000000L ;
+		final String libelleEtablissement = "Lycée Général Leclerc" ;
 		
 		Responsable responsable_Entry = Responsable.builder().matricule(matricule)
-				.nom(nom).prenom(prenom).sexe(sexe)
-				.dateNaissance(dateNaissance).lieuNaissance(lieuNaissance)
-				.datePriseService(datePriseService).telephone(telephone)
-				.email(email).build() ; 
+				.nom(nom).prenom(prenom).sexe(sexe).dateNaissance(dateNaissance).lieuNaissance(lieuNaissance)
+				.datePriseService(datePriseService).telephone(telephone).email(email)
+				.etablissement(Etablissement.builder().id(idEtablissement).libelle(libelleEtablissement).build())
+				.build() ; 
 		
-		Responsable responsable_Return = Responsable.builder()
-				.id(new Random().nextLong())
-				.matricule(matricule)
-				.nom(nom).prenom(prenom).sexe(sexe)
-				.dateNaissance(dateNaissance).lieuNaissance(lieuNaissance)
-				.datePriseService(datePriseService).telephone(telephone)
-				.email(email).build() ; 
+		Responsable responsable_Return = Responsable.builder().id(new Random().nextLong()).matricule(matricule)
+				.nom(nom).prenom(prenom).sexe(sexe).dateNaissance(dateNaissance).lieuNaissance(lieuNaissance)
+				.datePriseService(datePriseService).telephone(telephone).email(email)
+				.etablissement(Etablissement.builder().id(idEtablissement).libelle(libelleEtablissement).build())
+				.build() ; 
 		
 		ResponsableDTO responsableDTO_Entry = ResponsableDTO.builder().matricule(matricule)
-				.nom(nom).prenom(prenom).sexe(sexe)
-				.dateNaissance(dateNaissance).lieuNaissance(lieuNaissance)
-				.datePriseService(datePriseService).telephone(telephone)
-				.email(email).build() ; 
+				.nom(nom).prenom(prenom).sexe(sexe).dateNaissance(dateNaissance).lieuNaissance(lieuNaissance)
+				.datePriseService(datePriseService).telephone(telephone).email(email)
+				.idEtablissement(idEtablissement).libelleEtablissement(libelleEtablissement).build() ; 
 		
+		when(responsableRepository.existsByMatricule(matricule)).thenReturn(false) ;
 		when(responsableRepository.save(responsable_Entry)).thenReturn(responsable_Return) ;
-		ResponsableService responsableService = new ResponsableService(responsableRepository) ;
-		
+
 		ResponsableDTO responsableDTO_Return = responsableService.creer(responsableDTO_Entry) ;
 		
-		Assert.assertTrue(responsableDTO_Return.getId() != null
-				&& matricule.equals(responsableDTO_Return.getMatricule())
+		Assertions.assertNotNull(responsableDTO_Return.getId()) ;
+		
+		Assertions.assertTrue(matricule.equals(responsableDTO_Return.getMatricule())
 				&& nom.equals(responsableDTO_Return.getNom())
 				&& prenom.equals(responsableDTO_Return.getPrenom())
 				&& sexe.equals(responsableDTO_Return.getSexe())
@@ -63,7 +69,12 @@ public class ResponsableServiceUnitTest {
 				&& lieuNaissance.equals(responsableDTO_Return.getLieuNaissance())
 				&& datePriseService.equals(responsableDTO_Return.getDatePriseService())
 				&& telephone.equals(responsableDTO_Return.getTelephone())
-				&& email.equals(responsableDTO_Return.getEmail())) ;
+				&& email.equals(responsableDTO_Return.getEmail())
+				&& idEtablissement.equals(responsableDTO_Return.getIdEtablissement())
+				&& libelleEtablissement.equals(responsableDTO_Return.getLibelleEtablissement())) ;
+		
+		verify(responsableRepository, times(1)).existsByMatricule(matricule) ;
+		verify(responsableRepository, times(1)).save(responsable_Entry) ;
 	}
 	
 	

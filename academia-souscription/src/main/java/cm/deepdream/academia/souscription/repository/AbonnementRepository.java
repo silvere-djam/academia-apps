@@ -12,4 +12,5 @@ public interface AbonnementRepository extends CrudRepository<Abonnement, Long>{
 	public List<Abonnement> findByEtablissement (Etablissement etablissement) ;
 	public List<Abonnement> findByDateDebutBetween (LocalDate date1, LocalDate date2) ;
 	public List<Abonnement> findByStatut (String statut) ;
+	public Boolean existsByEtablissementAndDateDebut(Etablissement etablissement, LocalDate dateDebut) ;
 }

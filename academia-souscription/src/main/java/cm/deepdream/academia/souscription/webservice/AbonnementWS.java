@@ -2,8 +2,6 @@ package cm.deepdream.academia.souscription.webservice;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,114 +12,65 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import cm.deepdream.academia.souscription.model.Abonnement;
-import cm.deepdream.academia.souscription.model.Etablissement;
 import cm.deepdream.academia.souscription.service.AbonnementService;
-import cm.deepdream.academia.souscription.service.EtablissementService;
+import cm.deepdream.academia.souscription.transfert.AbonnementDTO;
+import cm.deepdream.academia.souscription.transfert.EtablissementDTO;
 @RestController
 @RequestMapping("/ws/abonnement")
 public class AbonnementWS {
-	private Logger logger = Logger.getLogger(AbonnementWS.class.getName()) ;
 	@Autowired
 	private AbonnementService abonnementService ;
-	@Autowired
-	private EtablissementService etablissementService ;
+
+	
 	
 	@PostMapping("/ajout")
-	public Abonnement ajouter (@RequestBody  Abonnement abonnement) {
+	public AbonnementDTO ajouter (@RequestBody  AbonnementDTO abonnement) {
 		return abonnementService.creer(abonnement) ;
 	}
 	
-	@PostMapping("/etablissement/ajout")
-	public Abonnement ajouter (@RequestBody  Etablissement etablissement) {
-		try {
-			Abonnement abonnementCree = abonnementService.creer(etablissement) ;
-			return abonnementCree ;
-		}catch(Exception ex) {
-			logger.log (Level.SEVERE, ex.getMessage(), ex) ;
-			return null ;
-		}
-	}
 	
 	@PutMapping("/modification")
-	public Abonnement modifier (@RequestBody Abonnement abonnement) {
-		try {
-			Abonnement abonnementMaj = abonnementService.modifier(abonnement) ;
-			return abonnementMaj ;
-		}catch(Exception ex) {
-			logger.log (Level.SEVERE, ex.getMessage(), ex) ;
-			return null ;
-		}
+	public AbonnementDTO modifier (@RequestBody AbonnementDTO abonnement) {
+		return abonnementService.modifier(abonnement) ;
 	}
+	
 	
 	@DeleteMapping("/suppression")
-	public int suppr (@RequestBody Abonnement abonnement) {
-		try {
-			abonnementService.supprimer(abonnement) ;
-			return 1 ;
-		}catch(Exception ex) {
-			logger.log (Level.SEVERE, ex.getMessage(), ex) ;
-			return 0 ;
-		}
+	public void supprimer (@RequestBody AbonnementDTO abonnement) {
+		abonnementService.supprimer(abonnement) ;
 	}
+	
 	
 	@GetMapping("/id/{id}")
-	public Abonnement getById (@PathVariable("id") long id) {
-		try {
-			Abonnement abonnement = abonnementService.rechercher(id) ;
-			return abonnement  ;
-		}catch(Exception ex) {
-			logger.log (Level.SEVERE, ex.getMessage(), ex) ;
-			return null ;
-		}
+	public AbonnementDTO getById (@PathVariable("id") Long id) {
+		return abonnementService.rechercher(id) ;
 	}
+	
 	
 	@GetMapping("/etablissement/{idEtablissement}")
-	public List<Abonnement> getByEcole (@PathVariable("idEtablissement") long idEtablissement) {
-		try {
-			Etablissement etablissement = etablissementService.rechercher(idEtablissement) ;
-			List<Abonnement> liste = abonnementService.rechercher(etablissement) ;
-			return liste ;
-		}catch(Exception ex) {
-			logger.log (Level.SEVERE, ex.getMessage(), ex) ;
-			return null ;
-		}
+	public List<AbonnementDTO> getByEtablissement (@PathVariable("idEtablissement") Long idEtablissement) {
+		EtablissementDTO etablissementDTO = EtablissementDTO.builder().id(idEtablissement).build() ;
+		return abonnementService.rechercher(etablissementDTO) ;
 	}
 	
+	
 	@GetMapping("/annee/{annee}")
-	public List<Abonnement> getByYear (@PathVariable("annee") Integer annee) {
-		try {
-			LocalDate dateDebut = LocalDate.of(annee, Month.JANUARY, 1) ;
-			LocalDate dateFin = LocalDate.of(annee, Month.DECEMBER, 31) ;
-			List<Abonnement> liste = abonnementService.rechercher(dateDebut, dateFin) ;
-			return liste ;
-		}catch(Exception ex) {
-			logger.log (Level.SEVERE, ex.getMessage(), ex) ;
-			return null ;
-		}
+	public List<AbonnementDTO> getByYear (@PathVariable("annee") Integer annee) {
+		LocalDate dateDebut = LocalDate.of(annee, Month.JANUARY, 1) ;
+		LocalDate dateFin = LocalDate.of(annee, Month.DECEMBER, 31) ;
+		return abonnementService.rechercher(dateDebut, dateFin) ;
 	}
 	
 	
 	@GetMapping("/statut/{statut}")
-	public List<Abonnement> getByStatut (@PathVariable("statut") String statut) {
-		try {
-			List<Abonnement> liste = abonnementService.rechercher(statut) ;
-			return liste ;
-		}catch(Exception ex) {
-			logger.log (Level.SEVERE, ex.getMessage(), ex) ;
-			return null ;
-		}
+	public List<AbonnementDTO> getByStatut (@PathVariable("statut") String statut) {
+		return abonnementService.rechercher(statut) ;
 	}
 	
+	
 	@GetMapping("/all")
-	public List<Abonnement> getAll () {
-		try {
-			List<Abonnement> liste = abonnementService.rechercherTout(new Abonnement()) ;
-			return liste ;
-		}catch(Exception ex) {
-			logger.log (Level.SEVERE, ex.getMessage(), ex) ;
-			return null ;
-		}
+	public List<AbonnementDTO> getAll () {
+		return abonnementService.rechercherTout() ;
 	}
 	
 }

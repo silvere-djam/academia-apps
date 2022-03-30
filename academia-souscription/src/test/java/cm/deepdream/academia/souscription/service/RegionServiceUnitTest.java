@@ -1,24 +1,29 @@
 package cm.deepdream.academia.souscription.service;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import cm.deepdream.academia.souscription.exceptions.RegionDuplicationException;
+import cm.deepdream.academia.souscription.exceptions.RegionNotFoundException;
 import cm.deepdream.academia.souscription.model.Pays;
 import cm.deepdream.academia.souscription.model.Region;
 import cm.deepdream.academia.souscription.repository.RegionRepository;
 import cm.deepdream.academia.souscription.transfert.RegionDTO;
-
-import static org.hamcrest.Matchers.*;
 import static org.mockito.Mockito.* ;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.Random ;
-@RunWith(SpringRunner.class)
+
+@ExtendWith(MockitoExtension.class)
 public class RegionServiceUnitTest {
-	@MockBean
+	@Mock
 	private RegionRepository regionRepository  ;
+	
+	@InjectMocks
+	private RegionService regionService ;
 	
 	
 	@Test
@@ -28,7 +33,6 @@ public class RegionServiceUnitTest {
 		final Long idPays = 1000000000L ;
 		final String codePays = "CM" ;
 
-
 		Region region_Entry = Region.builder().code(code).libelle(libelle)
 				.pays(Pays.builder().id(idPays).code(codePays).build()).build() ;
 		
@@ -36,19 +40,42 @@ public class RegionServiceUnitTest {
 				.pays(Pays.builder().id(idPays).code(codePays).build()).build() ;
 		
 		RegionDTO regionDTO_Entry = RegionDTO.builder().code(code).libelle(libelle).idPays(idPays)
-									   .codePays(codePays).build() ;
-				                       
+									         .codePays(codePays).build() ;
+		
+		when(regionRepository.existsByLibelle(libelle)).thenReturn(false) ;
 		when(regionRepository.save(region_Entry)).thenReturn(region_Return) ;
-		
-		RegionService regionService = new RegionService(regionRepository) ;
-		
+
 		RegionDTO regionDTO_Return = regionService.creer(regionDTO_Entry) ;
 		
-		Assert.assertTrue(regionDTO_Return.getId() != null
-				&& code.equals(regionDTO_Return.getCode())
+		Assertions.assertNotNull(regionDTO_Return.getId()) ;
+		
+		Assertions.assertTrue(code.equals(regionDTO_Return.getCode())
 				&& libelle.equals(regionDTO_Return.getLibelle())
-				&& idPays == regionDTO_Return.getIdPays()
+				&& idPays.equals(regionDTO_Return.getIdPays())
 				&& codePays.equals(regionDTO_Return.getCodePays())) ;
+		
+		verify(regionRepository, times(1)).existsByLibelle(libelle) ;
+		verify(regionRepository, times(1)).save(region_Entry) ;
+	}
+	
+	
+	
+	@Test
+	public void tester_creerRegion_avecDonneeInexistante() {
+		final String code = "NO" ;
+		final String libelle = "NORD" ;
+		final Long idPays = 1000000000L ;
+		final String codePays = "CM" ;
+
+		RegionDTO regionDTO_Entry = RegionDTO.builder().code(code).libelle(libelle).idPays(idPays)
+									         .codePays(codePays).build() ;
+		
+		when(regionRepository.existsByLibelle(libelle)).thenReturn(true) ;
+
+		Assertions.assertThrows(RegionDuplicationException.class, 
+				() -> regionService.creer(regionDTO_Entry)) ;
+		
+		verify(regionRepository, times(1)).existsByLibelle(libelle) ;
 	}
 	
 	
@@ -72,16 +99,38 @@ public class RegionServiceUnitTest {
 				                       
 		when(regionRepository.save(region_Entry)).thenReturn(region_Return) ;
 		when(regionRepository.findById(id)).thenReturn(Optional.of(region_Return)) ;
-		
-		RegionService regionService = new RegionService(regionRepository) ;
-		
+
 		RegionDTO regionDTO_Return = regionService.modifier(regionDTO_Entry) ;
 		
-		Assert.assertTrue(regionDTO_Return.getId() != null
+		Assertions.assertTrue(id.equals(regionDTO_Return.getId())
 				&& code.equals(regionDTO_Return.getCode())
 				&& libelle.equals(regionDTO_Return.getLibelle())
-				&& idPays == regionDTO_Return.getIdPays()
+				&& idPays.equals(regionDTO_Return.getIdPays())
 				&& codePays.equals(regionDTO_Return.getCodePays())) ;
+		
+		verify(regionRepository, times(1)).findById(id) ;
+		verify(regionRepository, times(1)).save(region_Entry) ;
+	}
+	
+	
+	
+	@Test
+	public void tester_modifierRegion_avecDonnnesInexistantes() {
+		final Long id = 1000000000L ;
+		final String code = "ES" ;
+		final String libelle = "EST" ;
+		final Long idPays = 1000000000L ;
+		final String codePays = "CM" ;
+
+		RegionDTO regionDTO_Entry = RegionDTO.builder().id(id).code(code).libelle(libelle).idPays(idPays)
+									   .codePays(codePays).build() ;
+				                       
+		when(regionRepository.findById(id)).thenReturn(Optional.empty()) ;
+
+		Assertions.assertThrows(RegionNotFoundException.class, 
+				() -> regionService.modifier(regionDTO_Entry)) ;
+		
+		verify(regionRepository, times(1)).findById(id) ;
 	}
 	
 	
@@ -101,16 +150,32 @@ public class RegionServiceUnitTest {
 		
 		when(regionRepository.findById(id)).thenReturn(Optional.of(region)) ;
 		doNothing().when(regionRepository).delete(region) ;
+
+		Assertions.assertDoesNotThrow(() -> regionService.supprimer(regionDTO_Entry) ) ;
 		
-		RegionService regionService = new RegionService(regionRepository) ;
-		
-		try {
-			regionService.supprimer(regionDTO_Entry) ;
-			Assert.assertTrue(true) ;
-		}catch(Exception e) {
-			Assert.fail() ;
-		}
+		verify(regionRepository, times(1)).findById(id) ;
 	}
+	
+	
+	
+	@Test
+	public void tester_supprimerRegion_avecDonneesInexistantes() {
+		final Long id = 1000000000L ;
+		final String code = "CE" ;
+		final String libelle = "CENTRE" ;
+		final Long idPays = 1000000000L ;
+		final String codePays = "CM" ;
+
+		RegionDTO regionDTO_Entry = RegionDTO.builder().id(id).code(code).libelle(libelle).idPays(idPays)
+				   .codePays(codePays).build() ;
+
+		when(regionRepository.findById(id)).thenReturn(Optional.empty()) ;
+
+		Assertions.assertThrows(RegionNotFoundException.class, () -> regionService.supprimer(regionDTO_Entry)) ;
+		
+		verify(regionRepository, times(1)).findById(id) ;
+	}
+	
 	
 	
 	@Test
@@ -125,16 +190,29 @@ public class RegionServiceUnitTest {
 				.pays(Pays.builder().id(idPays).code(codePays).build()).build() ;
 		
 		when(regionRepository.findById(id)).thenReturn(Optional.of(regionReturn)) ;
-		
-		RegionService regionService = new RegionService(regionRepository) ;
-		
+
 		RegionDTO regionDTO_Return = regionService.rechercher(id) ;
 		
-		Assert.assertTrue(id == regionDTO_Return.getId()
+		Assertions.assertTrue(id.equals(regionDTO_Return.getId()) 
 				&& code.equals(regionDTO_Return.getCode())
 				&& libelle.equals(regionDTO_Return.getLibelle())
-				&& idPays == regionDTO_Return.getIdPays()
+				&& idPays.equals(regionDTO_Return.getIdPays())
 				&& codePays.equals(regionDTO_Return.getCodePays())) ;
+		
+		verify(regionRepository, times(1)).findById(id) ;
+	}
+	
+	
+	
+	@Test
+	public void tester_rechercherRegion_avecDonneesInexistantes() {
+		final Long id = 1000000000L ;
+
+		when(regionRepository.findById(id)).thenReturn(Optional.empty()) ;
+
+		Assertions.assertThrows(RegionNotFoundException.class, () -> regionService.rechercher(id)) ;
+		
+		verify(regionRepository, times(1)).findById(id) ;
 	}
 	
 	
@@ -152,7 +230,7 @@ public class RegionServiceUnitTest {
 		RegionService regionService = new RegionService(regionRepository) ;
 		List<RegionDTO> listeRegionsDTO = regionService.rechercherTout() ;
 		
-		Assert.assertThat(listeRegionsDTO, hasSize(2));
+		Assertions.assertTrue(listeRegionsDTO.size() >= 2) ;
 	}
 
 }

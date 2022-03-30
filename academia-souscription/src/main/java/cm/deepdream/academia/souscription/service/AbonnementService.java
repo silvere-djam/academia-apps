@@ -1,87 +1,77 @@
 package cm.deepdream.academia.souscription.service;
 import java.time.LocalDate;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import cm.deepdream.academia.souscription.repository.AbonnementRepository;
-import cm.deepdream.academia.souscription.repository.EtablissementRepository;
 import cm.deepdream.academia.souscription.repository.OffreRepository;
-import cm.deepdream.academia.souscription.enums.StatutA;
+import cm.deepdream.academia.souscription.transfert.AbonnementDTO;
+import cm.deepdream.academia.souscription.transfert.EtablissementDTO;
+import cm.deepdream.academia.souscription.exceptions.AbonnementDuplicationException;
 import cm.deepdream.academia.souscription.exceptions.AbonnementNotFoundException;
+import cm.deepdream.academia.souscription.exceptions.OffreNotFoundException;
 import cm.deepdream.academia.souscription.model.Abonnement;
 import cm.deepdream.academia.souscription.model.Etablissement;
 import cm.deepdream.academia.souscription.model.Offre;
+
 @Transactional
 @Service
 public class AbonnementService {
 	private AbonnementRepository abonnementRepository ;
-	private EtablissementRepository etablissementRepository ;
 	private OffreRepository offreRepository ;
 	
 	
-	public AbonnementService(AbonnementRepository abonnementRepository, EtablissementRepository etablissementRepository,
-			OffreRepository offreRepository) {
+	public AbonnementService(AbonnementRepository abonnementRepository, OffreRepository offreRepository) {
 		this.abonnementRepository = abonnementRepository;
-		this.etablissementRepository = etablissementRepository;
 		this.offreRepository = offreRepository;
 	}
 
 
-	public Abonnement creer (Abonnement abonnement)   {
-		Optional<Offre> offreOpt = offreRepository.findById(abonnement.getOffre().getId()) ;
-		abonnement.setDateDebut(LocalDate.now()) ;
-		abonnement.setDateFin(abonnement.getDateDebut().plusMonths(offreOpt.get().getDureeEssai())) ;//???????
-		abonnement.setDateCreation(LocalDateTime.now()) ;
-		abonnement.setDateDernMaj(LocalDateTime.now()) ;
-		return abonnementRepository.save(abonnement) ;
-	}	
-	
-	
-	
-	public Abonnement creer (Etablissement etablissement) {
-		Etablissement etablissementCree = etablissementRepository.save(etablissement) ;
+	public AbonnementDTO creer (AbonnementDTO abonnementDTO)   {
+		Abonnement abonnementEntry = this.transformer(abonnementDTO) ;
 		
-		Abonnement abonnement = new Abonnement() ;
-		
-		abonnement.setEtablissement(etablissementCree);
-		abonnement.setNbEleves(etablissement.getNbElevesApprox());
-		
-		List<Offre> listeOffres = offreRepository.findByMinElevesLessThanEqualAndMaxElevesGreaterThanEqualOrderByMinElevesAsc(abonnement.getNbEleves(), 
-				abonnement.getNbEleves()) ;
-		
-		if(listeOffres.size() == 0) {
-			
+		if(abonnementRepository.existsByEtablissementAndDateDebut(abonnementEntry.getEtablissement(),
+				abonnementEntry.getDateDebut())) {
+			throw new AbonnementDuplicationException(String.valueOf(abonnementDTO)) ;
 		}
 		
-		Offre offre = listeOffres.get(0) ;
+		Optional<Offre> offreOpt = offreRepository.findById(abonnementDTO.getIdOffre()) ;
 		
-		abonnement.setEtablissement(etablissementCree);
-		abonnement.setOffre(offre);
-		abonnement.setDuree(offre.getDureeEssai());
-		abonnement.setDateDebut(LocalDate.now()) ;
-		abonnement.setDateFin(abonnement.getDateDebut().plusDays(offre.getDureeEssai())) ;
-		abonnement.setDateCreation(LocalDateTime.now()) ;
-		abonnement.setDateDernMaj(LocalDateTime.now()) ;
-		abonnement.setEvaluation(true);
-		abonnement.setStatut(StatutA.En_Cours.name());
-		abonnement.setNbEleves(etablissement.getNbElevesApprox());
-		return abonnementRepository.save(abonnement) ;
+		Offre offre = offreOpt.map(Function.identity())
+				              .orElseThrow(() -> new OffreNotFoundException(String.valueOf(abonnementDTO.getIdOffre()))) ;
+		
+		abonnementEntry.setDateFin(abonnementEntry.getDateDebut().plusMonths(offre.getDureeEssai())) ;
+		abonnementEntry.setDateCreation(LocalDateTime.now()) ;
+		abonnementEntry.setDateDernMaj(LocalDateTime.now()) ;
+		Abonnement abonnementReturn = abonnementRepository.save(abonnementEntry) ;
+		return this.transformer(abonnementReturn) ;
 	}	
 	
 	
-	public Abonnement modifier (Abonnement abonnement) {
-		abonnement.setDateDernMaj(LocalDateTime.now()) ;
-		abonnementRepository.save(abonnement) ;
-		return abonnement ;
+	public AbonnementDTO modifier (AbonnementDTO abonnementDTO) {
+		Abonnement abonnementEntry = this.transformer(abonnementDTO) ;
+		Abonnement abonnementExistant = abonnementRepository.findById(abonnementDTO.getId())
+				                                         .map(Function.identity())
+				                                         .orElseThrow(() -> new OffreNotFoundException(String.valueOf(abonnementDTO.getIdOffre()))) ;
+		
+		abonnementExistant.setStatut(abonnementEntry.getStatut()) ;
+		
+		abonnementExistant.setDateDernMaj(LocalDateTime.now()) ;
+		Abonnement abonnementReturn = abonnementRepository.save(abonnementEntry) ;
+		return this.transformer(abonnementReturn) ;
 	}
 	
 	
-	public void supprimer (Abonnement abonnement) {
+	public void supprimer (AbonnementDTO abonnementDTO) {
+		Abonnement abonnement = Abonnement.builder().id(abonnementDTO.getId()).build() ;
 		abonnementRepository.delete(abonnement) ;
 	}
 	
@@ -90,45 +80,76 @@ public class AbonnementService {
 		abonnementRepository.findById(id)
 						    .ifPresentOrElse(abonnementRepository::delete, 
 						    		() -> {
-						    				throw new AbonnementNotFoundException(String.format("%s", id));
+						    				throw new AbonnementNotFoundException(String.valueOf(id));
 						    			}); 
 	}
 	
 	
-	public Abonnement rechercher (Long id) throws Exception {
+	public AbonnementDTO rechercher (Long id) {
 		return abonnementRepository.findById(id)
 				 				   .map(Function.identity())
-				 				   .orElseThrow(()-> new AbonnementNotFoundException(String.format("%s", id))) ;
+				 				   .map(this::transformer)
+				 				   .orElseThrow(()-> new AbonnementNotFoundException(String.valueOf(id))) ;
+	}
+	
+
+	public List<AbonnementDTO> rechercher(EtablissementDTO etablissementDTO) {
+		Etablissement etablissement = Etablissement.builder().id(etablissementDTO.getId()).build() ;
+		return abonnementRepository.findByEtablissement(etablissement).stream()
+				                   .map(Function.identity())
+				                   .map(this::transformer)
+				                   .collect(Collectors.toList());
 	}
 	
 	
-	public List<Abonnement> rechercher(Abonnement abonnement) throws Exception {
+	public List<AbonnementDTO> rechercher(String statut) {
+		return abonnementRepository.findByStatut(statut).stream()
+				                   .map(Function.identity()) 
+				                   .map(this::transformer)
+				                   .collect(Collectors.toList()) ; 
+	}
+	
+	
+	public List<AbonnementDTO> rechercher(LocalDate dateDebut, LocalDate dateFin) {
+		return abonnementRepository.findByDateDebutBetween(dateDebut, dateFin).stream()
+				                   .map(Function.identity())
+				                   .map(this::transformer)
+				                   .collect(Collectors.toList()) ; 
+	}
+	
+	
+	public List<AbonnementDTO> rechercherTout () {
 		Iterable<Abonnement> itAbonnements = abonnementRepository.findAll() ;
-		List<Abonnement> listeAbonnements = new ArrayList<>() ;
-		itAbonnements.forEach(listeAbonnements::add);
-		return listeAbonnements ;
+		List<AbonnementDTO> listeAbonnementsDTO = new ArrayList<>() ;
+		itAbonnements.forEach(abonnement -> listeAbonnementsDTO.add(this.transformer(abonnement)));
+		return listeAbonnementsDTO ;
 	}
 	
 	
-	public List<Abonnement> rechercher(Etablissement etablissement) {
-		return abonnementRepository.findByEtablissement(etablissement) ;
+	private AbonnementDTO transformer (Abonnement abonnement) {
+		Etablissement etablissement = abonnement.getEtablissement() ;
+		Offre offre = abonnement.getOffre() ;
+		return AbonnementDTO.builder().id(abonnement.getId()).dateDebut(abonnement.getDateDebut())
+							.dateFin(abonnement.getDateFin()).duree(abonnement.getDuree())
+							.evaluation(abonnement.getEvaluation())
+							.idEtablissement(etablissement == null ? null : etablissement.getId())
+							.libelleEtablissement(etablissement == null ? null : etablissement.getLibelle())
+							.idOffre(offre == null ? null : offre.getId())
+							.libelleOffre(offre == null ? null : offre.getLibelle())
+							.nbEleves(abonnement.getNbEleves()).statut(abonnement.getStatut())
+							.build() ;
 	}
 	
 	
-	public List<Abonnement> rechercher(String statut) {
-		return abonnementRepository.findByStatut(statut) ; 
-	}
-	
-	
-	public List<Abonnement> rechercher(LocalDate dateDebut, LocalDate dateFin) {
-		return abonnementRepository.findByDateDebutBetween(dateDebut, dateFin) ; 
-	}
-	
-	
-	public List<Abonnement> rechercherTout (Abonnement abonnement) {
-		Iterable<Abonnement> itAbonnements = abonnementRepository.findAll() ;
-		List<Abonnement> listeAbonnements = new ArrayList<>() ;
-		itAbonnements.forEach(listeAbonnements::add);
-		return listeAbonnements ;
+	private Abonnement transformer (AbonnementDTO abonnementDTO) {
+		Etablissement etablissement = abonnementDTO.getIdEtablissement() == null ? null : Etablissement.builder().id(abonnementDTO.getIdEtablissement()).build() ;
+		Offre offre = abonnementDTO.getIdOffre() == null ? null : Offre.builder().id(abonnementDTO.getIdOffre()).build() ;
+		return Abonnement.builder()
+							.id(abonnementDTO.getId()).dateDebut(abonnementDTO.getDateDebut())
+							.dateFin(abonnementDTO.getDateFin()).duree(abonnementDTO.getDuree())
+							.dateDebut(abonnementDTO.getDateDebut()).evaluation(abonnementDTO.getEvaluation())
+							.nbEleves(abonnementDTO.getNbEleves()).statut(abonnementDTO.getStatut())
+							.etablissement(etablissement).offre(offre)
+							.build() ;
 	}
 }

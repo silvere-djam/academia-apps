@@ -1,9 +1,12 @@
 package cm.deepdream.academia.souscription.model;
+import java.io.Serializable;
 import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Past;
@@ -20,7 +23,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = false)
 @AllArgsConstructor
 @NoArgsConstructor
-public class Responsable extends EntiteGenerique{
+public class Responsable implements Serializable{
 	@Id
 	@GeneratedValue
 	@Column(name="id")
@@ -60,5 +63,9 @@ public class Responsable extends EntiteGenerique{
 	@Email
 	@Column(name = "email")
 	private String email ;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_etablissement")
+	private Etablissement etablissement ;
 
 }

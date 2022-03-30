@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import cm.deepdream.academia.souscription.model.Pays;
 @Repository
 public interface PaysRepository extends CrudRepository<Pays, Long>{
-
+	public Boolean existsByLibelle(String libelle) ;
 }

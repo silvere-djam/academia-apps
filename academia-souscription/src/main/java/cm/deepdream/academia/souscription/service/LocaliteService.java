@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import cm.deepdream.academia.souscription.repository.LocaliteRepository;
 import cm.deepdream.academia.souscription.transfert.LocaliteDTO;
 import cm.deepdream.academia.souscription.transfert.RegionDTO;
+import cm.deepdream.academia.souscription.exceptions.LocaliteDuplicationException;
 import cm.deepdream.academia.souscription.exceptions.LocaliteNotFoundException;
 import cm.deepdream.academia.souscription.model.Localite;
 import cm.deepdream.academia.souscription.model.Region;
@@ -16,9 +17,17 @@ import cm.deepdream.academia.souscription.model.Region;
 @Transactional
 public class LocaliteService {
 	private LocaliteRepository localiteRepository ;
-
 	
+	
+	public LocaliteService(LocaliteRepository localiteRepository) {
+		this.localiteRepository = localiteRepository;
+	}
+
+
 	public LocaliteDTO creer (LocaliteDTO localiteDTO)  {
+		if(localiteRepository.existsByLibelle(localiteDTO.getLibelle())) {
+			throw new LocaliteDuplicationException(String.valueOf(localiteDTO)) ;
+		}
 		Localite localiteEntry = this.transformer(localiteDTO) ;
 		Localite localiteReturn = localiteRepository.save(localiteEntry) ;
 		return this.transformer(localiteReturn) ;
@@ -91,7 +100,7 @@ public class LocaliteService {
 	
 	
 	private Localite transformer (LocaliteDTO localiteDTO) {
-		 Region region = localiteDTO.getIdRegion() == null ? null : Region.builder().id(localiteDTO.getIdRegion()).build() ;
+		 Region region = localiteDTO.getIdRegion() == null ? null : Region.builder().id(localiteDTO.getIdRegion()).libelle(localiteDTO.getLibelleRegion()).build() ;
 		 return Localite.builder()
 				 		.id(localiteDTO.getId())
 				 		.libelle(localiteDTO.getLibelle())
