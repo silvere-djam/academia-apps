@@ -48,9 +48,11 @@ public class AbonnementService {
 		Offre offre = offreOpt.map(Function.identity())
 				              .orElseThrow(() -> new OffreNotFoundException(String.valueOf(abonnementDTO.getIdOffre()))) ;
 		
-		abonnementEntry.setDateFin(abonnementEntry.getDateDebut().plusMonths(offre.getDureeEssai())) ;
-		abonnementEntry.setDateCreation(LocalDateTime.now()) ;
-		abonnementEntry.setDateDernMaj(LocalDateTime.now()) ;
+		abonnementEntry.setDateFin(abonnementEntry.getDateDebut()
+				.plusMonths(abonnementDTO.getEvaluation() ? offre.getDureeEssai() :  abonnementDTO.getDuree())) ;
+		//abonnementEntry.setDateCreation(LocalDateTime.now()) ;
+		//abonnementEntry.setDateDernMaj(LocalDateTime.now()) ;
+		abonnementEntry.setOffre(offre) ;
 		Abonnement abonnementReturn = abonnementRepository.save(abonnementEntry) ;
 		return this.transformer(abonnementReturn) ;
 	}	
@@ -60,19 +62,22 @@ public class AbonnementService {
 		Abonnement abonnementEntry = this.transformer(abonnementDTO) ;
 		Abonnement abonnementExistant = abonnementRepository.findById(abonnementDTO.getId())
 				                                         .map(Function.identity())
-				                                         .orElseThrow(() -> new OffreNotFoundException(String.valueOf(abonnementDTO.getIdOffre()))) ;
+				                                         .orElseThrow(() -> new AbonnementNotFoundException(String.valueOf(abonnementDTO.getIdOffre()))) ;
 		
 		abonnementExistant.setStatut(abonnementEntry.getStatut()) ;
 		
-		abonnementExistant.setDateDernMaj(LocalDateTime.now()) ;
+		//abonnementExistant.setDateDernMaj(LocalDateTime.now()) ;
 		Abonnement abonnementReturn = abonnementRepository.save(abonnementEntry) ;
 		return this.transformer(abonnementReturn) ;
 	}
 	
 	
 	public void supprimer (AbonnementDTO abonnementDTO) {
-		Abonnement abonnement = Abonnement.builder().id(abonnementDTO.getId()).build() ;
-		abonnementRepository.delete(abonnement) ;
+		abonnementRepository.findById(abonnementDTO.getId())
+							.ifPresentOrElse(abonnementRepository::delete, 
+										() -> {
+											throw new AbonnementNotFoundException(String.valueOf(abonnementDTO.getId()));
+										}); 
 	}
 	
 	
@@ -142,8 +147,10 @@ public class AbonnementService {
 	
 	
 	private Abonnement transformer (AbonnementDTO abonnementDTO) {
-		Etablissement etablissement = abonnementDTO.getIdEtablissement() == null ? null : Etablissement.builder().id(abonnementDTO.getIdEtablissement()).build() ;
-		Offre offre = abonnementDTO.getIdOffre() == null ? null : Offre.builder().id(abonnementDTO.getIdOffre()).build() ;
+		Etablissement etablissement = abonnementDTO.getIdEtablissement() == null ? null : 
+			Etablissement.builder().id(abonnementDTO.getIdEtablissement()).libelle(abonnementDTO.getLibelleEtablissement()).build() ;
+		Offre offre = abonnementDTO.getIdOffre() == null ? null : 
+			Offre.builder().id(abonnementDTO.getIdOffre()).libelle(abonnementDTO.getLibelleOffre()).build() ;
 		return Abonnement.builder()
 							.id(abonnementDTO.getId()).dateDebut(abonnementDTO.getDateDebut())
 							.dateFin(abonnementDTO.getDateFin()).duree(abonnementDTO.getDuree())

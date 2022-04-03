@@ -104,7 +104,7 @@ public class OffreService {
 	private OffreDTO transformer (Offre offre) {
 		return OffreDTO.builder().id(offre.getId()).libelle(offre.getLibelle()).description(offre.getDescription())
 					   .dureeEssai(offre.getDureeEssai()).maxEleves(offre.getMaxEleves()).maxUtilisateurs(offre.getMaxUtilisateurs())
-					   .minEleves(offre.getMinEleves()).montantBase(offre.getMontantMillier()).montantMillier(offre.getMontantMillier())
+					   .minEleves(offre.getMinEleves()).montantBase(offre.getMontantBase()).montantMillier(offre.getMontantMillier())
 					   .build() ;
 	}
 	
@@ -112,7 +112,7 @@ public class OffreService {
 	private Offre transformer (OffreDTO offreDTO) {
 		return   Offre.builder().id(offreDTO.getId()).libelle(offreDTO.getLibelle()).description(offreDTO.getDescription())
 					   .dureeEssai(offreDTO.getDureeEssai()).maxEleves(offreDTO.getMaxEleves()).maxUtilisateurs(offreDTO.getMaxUtilisateurs())
-					   .minEleves(offreDTO.getMinEleves()).montantBase(offreDTO.getMontantMillier()).montantMillier(offreDTO.getMontantMillier())
+					   .minEleves(offreDTO.getMinEleves()).montantBase(offreDTO.getMontantBase()).montantMillier(offreDTO.getMontantMillier())
 					   .build() ;
 	}
 }

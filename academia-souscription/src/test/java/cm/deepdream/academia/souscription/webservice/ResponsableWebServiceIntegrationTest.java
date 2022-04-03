@@ -1,12 +1,11 @@
 package cm.deepdream.academia.souscription.webservice;
 import java.time.LocalDate;
+
 import java.time.Month;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
@@ -16,14 +15,12 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.jdbc.Sql;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.context.junit4.SpringRunner;
 
+import cm.deepdream.academia.souscription.AcademiaSouscriptionApplication;
 import cm.deepdream.academia.souscription.transfert.ResponsableDTO;
 import lombok.extern.log4j.Log4j2;
-@RunWith(SpringRunner.class)
-@ExtendWith(SpringExtension.class)
-@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+
+@SpringBootTest(classes =  AcademiaSouscriptionApplication.class, webEnvironment = WebEnvironment.RANDOM_PORT)
 @Log4j2
 public class ResponsableWebServiceIntegrationTest {
 	@Autowired

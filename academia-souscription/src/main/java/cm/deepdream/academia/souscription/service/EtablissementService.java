@@ -100,7 +100,8 @@ public class EtablissementService {
 	
 	
 	private Etablissement transformer (EtablissementDTO etablissementDTO) {
-		Localite localite = etablissementDTO.getIdLocalite() == null ? null : Localite.builder().id(etablissementDTO.getIdLocalite()).build() ;
+		Localite localite = etablissementDTO.getIdLocalite() == null ? null : 
+			Localite.builder().id(etablissementDTO.getIdLocalite()).libelle(etablissementDTO.getLibelleLocalite()).build() ;
 		return Etablissement.builder().id(etablissementDTO.getId()).libelle(etablissementDTO.getLibelle())
 				               .cycle(etablissementDTO.getCycle()).email(etablissementDTO.getEmail())
 				               .nbElevesApprox(etablissementDTO.getNbElevesApprox())
